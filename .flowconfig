@@ -1,0 +1,16 @@
+[include]
+.*/src/
+
+[ignore]
+.*/node_modules/fbjs
+.*/node_modules/editions/source
+
+[libs]
+./defs
+./flow-typed
+
+[options]
+module.name_mapper.extension='css' -> 'CSSModule'
+module.name_mapper.extension='svg' -> 'EmptyModule'
+module.name_mapper='^\$src/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
