@@ -9,7 +9,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow-typed": "flow-typed install",
     "lint": "eslint src webpack",
-    "start": "webpack-dashboard -c magenta -- node -r babel-register node_modules/.bin/webpack-dev-server --config webpack/development.js",
+    "start": "webpack-dashboard -c \"#1179ad\" -- node -r babel-register node_modules/.bin/webpack-dev-server --config webpack/development.js",
     "compile": "node -r babel-register node_modules/.bin/webpack -p  --bail --config webpack/production.js",
     "precommit": "npm-run-all flow lint test",
     "test": "mocha --compilers js:babel-core/register --require src/test.js --recursive \"src/**/*spec.js\"",
