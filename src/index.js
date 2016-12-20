@@ -1,5 +1,5 @@
 // @flow
 
-import startApp from './modules/root/startApp'
+import startApp from './root/startApp'
 
 startApp()
