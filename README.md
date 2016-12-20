@@ -15,7 +15,7 @@ Boilerplate for our [React](https://facebook.github.io/react/) applications.
 - [Eslint](http://eslint.org/) Linting utility
 - [Webpack](https://webpack.github.io/) Module bundler
 - [Mocha](https://mochajs.org/) Testing framework
-- [Chai](http://chaijs.com/) Assertation library
+- [Chai](http://chaijs.com/) Assertion library
 - [Enzyme](https://github.com/airbnb/enzyme) React testing utilities
 - [Sinon](http://sinonjs.org/) Testing utilities
 
