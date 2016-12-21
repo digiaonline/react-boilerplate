@@ -4,7 +4,7 @@ import path from 'path'
 import buildConfig from './buildConfig'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import CleanPlugin from 'webpack-clean-plugin'
+import CleanPlugin from 'clean-webpack-plugin'
 
 const context = path.resolve(__dirname, '..')
 const extractStylesPlugin = new ExtractTextPlugin('[name].[hash].css')
