@@ -5,6 +5,7 @@ import buildConfig from './buildConfig'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import CleanPlugin from 'clean-webpack-plugin'
+import OfflinePlugin from 'offline-plugin'
 
 const context = path.resolve(__dirname, '..')
 const extractStylesPlugin = new ExtractTextPlugin('[name].[hash].css')
@@ -45,6 +46,14 @@ export default
           },
         }),
         extractStylesPlugin,
+        new OfflinePlugin({
+          AppCache: false,
+          publicPath: '/',
+          relativePaths: false,
+          ServiceWorker: {
+            events: true,
+          },
+        }),
       ],
     },
     {
