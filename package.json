@@ -33,6 +33,7 @@
     "html-webpack-plugin": "^2.24.1",
     "lodash": "^4.17.2",
     "normalize.css": "^5.0.0",
+    "offline-plugin": "^4.5.3",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
