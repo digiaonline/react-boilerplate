@@ -1,10 +1,8 @@
-# React Boilerplate
-
-by [Nord Software](https://nordsoftware.com)
+# React Boilerplate by [Nord Software](https://nordsoftware.com)
 
 Boilerplate for our [React](https://facebook.github.io/react/) applications.
 
-## Building blocks
+## What's in the box?
 
 - [Flowtype](https://flowtype.org/) Type checker
 - [Yarn](https://yarnpkg.com/) Dependency manager
@@ -17,39 +15,42 @@ Boilerplate for our [React](https://facebook.github.io/react/) applications.
 - [Mocha](https://mochajs.org/) Testing framework
 - [Chai](http://chaijs.com/) Assertion library
 - [Enzyme](https://github.com/airbnb/enzyme) React testing utilities
-- [Sinon](http://sinonjs.org/) Testing utilities
+- And more...
 
-## Install
+## Usage
 
-Run the following command to install the dependencies:
+#### Install dependencies
 
 ```bash
 yarn
 ```
 
-## Usage
-
-### Development server
+#### Start the development server
 
 ```bash
 npm start
 ```
 
-### Distribution build
+#### Compile the distribution build
 
 ```bash
 npm run compile
 ```
-
 ## Test
+
+#### Run the test suite
 
 ```bash
 npm test
 ```
 
+#### Run the test suit in watch mode
+
 ```
 npm run test:watch
 ```
+
+#### Generate the test coverage report
 
 ```
 npm run test:coverage
