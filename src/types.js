@@ -1,7 +1,7 @@
 // @flow
 
-import type {RootState} from './modules/root/types'
-import type {HelloAction, ReplyAction} from './modules/hello/types'
+import type {RootState} from './root/types'
+import type {HelloAction, ReplyAction} from './hello/types'
 
 export type Action<Type: string, Payload: mixed> = {
   type: Type,
