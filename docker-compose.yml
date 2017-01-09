@@ -1,0 +1,9 @@
+version: '2'
+services:
+  app:
+    image: kkarczmarczyk/node-yarn:7.2-slim
+    command: "npm start"
+    volumes:
+      - ./:/workspace
+    ports:
+      - 18080:8080
