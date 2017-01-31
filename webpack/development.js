@@ -39,6 +39,7 @@ export default
       ],
       devServer: {
         hot: true,
+        host: '0.0.0.0',
         historyApiFallback: true,
         quiet: true,
         inline: true,
