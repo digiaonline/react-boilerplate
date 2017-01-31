@@ -1,7 +1,8 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
   ],
   "env": {
     "browser": true,
@@ -27,6 +28,7 @@
     "semi": [2, "never"]
   },
   "plugins": [
-    "react"
+    "react",
+    "flowtype"
   ]
 }

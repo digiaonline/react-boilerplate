@@ -1,15 +1,10 @@
 // @flow
 
 import type {RootState} from './root/types'
-import type {HelloAction, ReplyAction} from './hello/types'
 
-export type Action<Type: string, Payload: mixed> = {
+export type Action<Type: string, Payload> = {
   type: Type,
-  payload?: Payload,
+  payload: Payload,
 }
 
-export type Selector<Value, Props: ?Object> = (state: RootState, props: Props) => Value
-
-export type ValidActions =
-  HelloAction |
-  ReplyAction
+export type Selector<Value, Props> = (state: RootState, props: Props) => Value
