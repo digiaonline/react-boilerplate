@@ -1,14 +1,12 @@
-// @flow
-
 import path from 'path'
-import buildConfig from './buildConfig'
+import createConfig from './createConfig'
 import webpack from 'webpack'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 
 const context = path.resolve(__dirname, '..')
 
 export default
-  buildConfig(
+  createConfig(
     context,
     {
       devtool: 'eval',
@@ -16,7 +14,6 @@ export default
         'react-hot-loader/patch',
         'babel-polyfill',
         './src/index.js',
-        './src/index.css',
       ],
       output: {
         filename: '[name].js',
@@ -24,17 +21,23 @@ export default
         chunkFilename: '[id].js',
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.css$/,
-            loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            use: [
+              'style-loader',
+              'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            ],
             include: /src/,
           },
         ],
       },
       plugins: [
+        new webpack.LoaderOptionsPlugin({
+          debug: true,
+        }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new DashboardPlugin(),
       ],
       devServer: {
