@@ -11,7 +11,7 @@ Boilerplate for our [React](https://facebook.github.io/react/) applications.
 - [Lodash](https://lodash.com/) Utility library
 - [Babel](https://babeljs.io/) ES.Next transpiler
 - [Eslint](http://eslint.org/) Linting utility
-- [Webpack](https://webpack.github.io/) Module bundler
+- [Webpack](https://webpack.js.org/) Module bundler
 - [Mocha](https://mochajs.org/) Testing framework
 - [Chai](http://chaijs.com/) Assertion library
 - [Enzyme](https://github.com/airbnb/enzyme) React testing utilities
@@ -28,32 +28,32 @@ yarn
 #### Start the development server
 
 ```bash
-npm start
+yarn start
 ```
 
 #### Compile the distribution build
 
 ```bash
-npm run compile
+yarn run compile
 ```
 ## Test
 
 #### Run the test suite
 
 ```bash
-npm test
+yarn test
 ```
 
 #### Run the test suit in watch mode
 
 ```
-npm run test:watch
+yarn run test:watch
 ```
 
 #### Generate the test coverage report
 
 ```
-npm run test:coverage
+yarn run test:coverage
 ```
 
 ## License
