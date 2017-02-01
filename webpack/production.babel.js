@@ -1,24 +1,23 @@
-// @flow
-
 import path from 'path'
-import buildConfig from './buildConfig'
+import createConfig from './createConfig'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import CleanPlugin from 'clean-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 
 const context = path.resolve(__dirname, '..')
-const extractStylesPlugin = new ExtractTextPlugin('[name].[hash].css')
+const extractStylesPlugin = new ExtractTextPlugin({
+  filename: '[name].[hash].css',
+})
 
 export default
-  buildConfig(
+  createConfig(
     context,
     {
       devtool: 'source-map',
       entry: [
         'babel-polyfill',
         './src/index.js',
-        './src/index.css',
       ],
       output: {
         filename: '[name].[hash].js',
@@ -26,24 +25,24 @@ export default
         chunkFilename: '[id].[hash].js',
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.css$/,
-            loader: extractStylesPlugin.extract(
-              'style-loader',
-              'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-            ),
+            loader: extractStylesPlugin.extract({
+              fallbackLoader: 'style-loader',
+              loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            }),
             include: /src/,
           },
         ],
       },
       plugins: [
         new CleanPlugin(['./dist'], {root: context}),
-        new webpack.optimize.DedupePlugin(),
+        new webpack.LoaderOptionsPlugin({
+          minimize: true,
+        }),
         new webpack.optimize.UglifyJsPlugin({
-          compressor: {
-            warnings: false,
-          },
+          sourceMap: true,
         }),
         extractStylesPlugin,
         new OfflinePlugin({

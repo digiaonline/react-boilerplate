@@ -9,8 +9,8 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow-typed": "flow-typed install",
     "lint": "eslint src webpack",
-    "start": "webpack-dashboard -c \"#0078af\" -- node -r babel-register node_modules/.bin/webpack-dev-server --config webpack/development.js",
-    "compile": "node -r babel-register node_modules/.bin/webpack -p  --bail --config webpack/production.js",
+    "start": "webpack-dashboard -c \"#0078af\" -- webpack-dev-server --config webpack/development.babel.js",
+    "compile": "webpack -p  --bail --config webpack/production.babel.js",
     "precommit": "npm-run-all flow lint test",
     "test": "mocha --compilers js:babel-core/register --require src/test.js --recursive \"src/**/*spec.js\"",
     "test:coverage": "istanbul cover _mocha -- --compilers js:babel-core/register --require src/test.js --recursive \"src/**/*spec.js\"",
@@ -30,7 +30,7 @@
     "dotenv": "^2.0.0",
     "eslint": "^3.12.2",
     "eslint-plugin-flowtype": "^2.30.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "beta",
     "html-webpack-plugin": "^2.24.1",
     "lodash": "^4.17.2",
     "normalize.css": "^5.0.0",
@@ -44,7 +44,7 @@
     "redux-actions": "^1.2.1",
     "redux-saga": "^0.13.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
+    "webpack": "^2.2.1",
     "webpack-merge": "^1.1.2"
   },
   "devDependencies": {
