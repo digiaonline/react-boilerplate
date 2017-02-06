@@ -1,6 +1,5 @@
 /coverage/
 /node_modules/
-/flow-typed/
 /dist/
 .env
 npm-debug*

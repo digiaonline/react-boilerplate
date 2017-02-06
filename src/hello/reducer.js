@@ -3,10 +3,11 @@
 import {combineReducers} from 'redux'
 import {handleActions} from 'redux-actions'
 
+import type {Reducer} from '../types'
 import type {ReplyAction} from './types'
 
-export const messageReducer = handleActions({
-  ['REPLY']: (state: mixed, {payload: message}: ReplyAction) => message,
+export const messageReducer: Reducer<string> = handleActions({
+  ['REPLY']: (state, {payload: message}: ReplyAction) => message,
 }, '')
 
 export default combineReducers({

@@ -1,23 +1,26 @@
 // @flow
 
 import {browserHistory} from 'react-router'
+import configureStore from './configureStore'
 import renderApp from './renderApp'
 import Root from './Root'
 
-import type {RootProps} from './Root'
-
-const rootProps: RootProps = {
-  history: browserHistory,
-}
-
 export default () => {
+  const store = configureStore()
+
+  const rootProps = {
+    history: browserHistory,
+    store,
+  }
+
   renderApp(Root, rootProps)
 
   if (module.hot) {
     // $FlowFixMe
     module.hot.accept('./Root', () => {
-      const nextRootComponent = require('./Root').default
-      renderApp(nextRootComponent, rootProps)
+      console.log('root updated')
+      const nextRoot = require('./Root').default
+      renderApp(nextRoot, rootProps)
     })
   }
 
