@@ -10,7 +10,7 @@ function* sayHelloSaga(): Generator<> {
 
 export default function* (): Generator<> {
   yield [
-    fork(function* () {
+    fork(function* (): Generator<> {
       yield takeLatest('SAY_HELLO', sayHelloSaga)
     }),
   ]
