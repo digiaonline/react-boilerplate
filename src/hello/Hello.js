@@ -28,7 +28,7 @@ class Hello extends Component {
 
     return (
       <div className={css.component}>
-        <h1>{message} asd</h1>
+        <h1>{message}</h1>
       </div>
     )
   }
