@@ -65,7 +65,7 @@
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "webpack-dashboard": "^0.2.0",
-    "webpack-dev-server": "^1.16.2",
+    "webpack-dev-server": "^2.3.0",
     "webpack-hot-middleware": "^2.13.2"
   }
 }
