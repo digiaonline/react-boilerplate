@@ -2,6 +2,10 @@
 
 Boilerplate for our [React](https://facebook.github.io/react/) applications.
 
+## How do I use this?
+
+You can find our documentation [here](./docs/README.md).
+
 ## What's in the box?
 
 - [Flowtype](https://flowtype.org/) Type checker
