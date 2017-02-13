@@ -275,9 +275,13 @@ instead of [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Re
 **Do**
 
 ```javascript
-const response = await fetch('https://example.com')
-const body = await response.json()
-console.log(body)
+try {
+  const response = await fetch('https://example.com')
+  const body = await response.json()
+  console.log(body)
+} catch (error) {
+  console.error(error)
+}
 ```
 
 **Do NOT do**
@@ -287,6 +291,9 @@ fetch('https://example.com')
   .then((response) => response.json())
   .then((body) => {
     console.log(body)
+  })
+  .catch((error) => {
+    console.error(error)
   })
 ```
 
