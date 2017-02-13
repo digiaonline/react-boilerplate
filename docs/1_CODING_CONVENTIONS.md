@@ -298,7 +298,7 @@ fetch('https://example.com')
 ```
 
 Use [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
-when running multiple async functions in parallel:
+when running multiple async functions in parallel.
 
 **Do**
 
@@ -307,4 +307,16 @@ const [orders, customers] = await Promise.all([
   getOrders(),
   getCustomers(),
 ])
+console.log(orders, customers)
+```
+
+**Do NOT do**
+
+```javascript
+Promise.all([
+  getOrders(),
+  getCustomers(),
+]).then(([orders, customers]) => {
+  console.log(orders, customers)
+})
 ```
