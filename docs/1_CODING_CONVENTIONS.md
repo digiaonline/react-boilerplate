@@ -266,3 +266,38 @@ export default () => 'Hello from an ES6 module'
 ```javascript
 module.exports = () => 'Hello from an old module'
 ```
+
+### Async functions
+
+Use [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+instead of [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+
+**Do**
+
+```javascript
+const response = await fetch('https://example.com')
+const body = await response.json()
+console.log(body)
+```
+
+**Do NOT do**
+
+```javascript
+fetch('https://example.com')
+  .then((response) => response.json())
+  .then((body) => {
+    console.log(body)
+  })
+```
+
+Use [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+when running multiple async functions in parallel:
+
+**Do**
+
+```javascript
+const [orders, customers] = await Promise.all([
+  getOrders(),
+  getCustomers(),
+])
+```
