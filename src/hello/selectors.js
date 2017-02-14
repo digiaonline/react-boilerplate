@@ -1,4 +1,8 @@
 import type {Selector} from '../../types'
 
-export const getMessage: Selector<string> = (state) =>
+const getMessage: Selector<string> = (state) =>
   state.hello.message
+
+export const helloSelector: Selector<mixed> = (state) => ({
+  message: getMessage(state),
+})

@@ -4,7 +4,7 @@ import flowRight from 'lodash/flowRight'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {sayHello} from './actions'
-import {getMessage} from './selectors'
+import {helloSelector} from './selectors'
 import css from './Hello.css'
 
 type HelloProps = {
@@ -35,10 +35,5 @@ class Hello extends Component {
 }
 
 export default flowRight(
-  connect(
-    (state) => ({
-      message: getMessage(state),
-    }),
-    {sayHello}
-  ),
+  connect(helloSelector, {sayHello}),
 )(Hello)
