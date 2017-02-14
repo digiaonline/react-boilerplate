@@ -4,7 +4,7 @@ Here you can read about our preferred ways of writing code.
 
 ## Compiler
 
-Use [Babel](https://babeljs.io/) to compile your code from modern JavaScript to traditional JavaScript that will run in any browser.
+Use [Babel](https://babeljs.io/) to transform your code from modern JavaScript to traditional JavaScript that will run in any browser.
 
 ### Presets
 
@@ -177,7 +177,7 @@ fetch('https://example.com')
   })
 ```
 
-Use [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) when running multiple async functions in parallel.
+Use [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) when running multiple async functions in parallel.
 
 **Do**
 
@@ -294,9 +294,11 @@ const obj2 = Object.assign({y: 2}, obj)
 const obj2.z = 2
 ```
 
-## Const and Let statements
+## Variables
 
-Use [const](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const) whenever possible. Note that you can use `const` even for arrays and objects as long as you do not try to assign a new reference to the variable.
+### Const
+
+Use [const](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const) whenever possible. Note that you can use `const` even for arrays and objects as long as you do not assign a new reference to that variable.
 
 **Do**
 
@@ -311,6 +313,8 @@ arr.push(3)
 let arr = [0, 1, 2]
 arr.push(3)
 ```
+
+### Let
 
 Use [let](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let) when you need a non-constant local variable.
 
@@ -330,7 +334,7 @@ for (var i = 0; i < arr.length; i++) {
 }
 ```
 
-The traditional [var](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/var) should be avoided at all cost.
+**Note:** The traditional [var](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/var) should be avoided at all cost.
 
 ## Functional style
 
