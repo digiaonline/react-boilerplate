@@ -50,12 +50,16 @@ You should try to keep your application state as flat as possible.
 **Do**
 
 ```javascript
-const todosReducer = (state = [], action) => {
+const listReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [...state, action.payload]
   }
 }
+
+combineReducers({
+  list: listReducer,
+})
 ```
 
 **Do NOT do**
@@ -66,7 +70,7 @@ const todoReducer = (state = {todos: []}, action) => {
     case 'ADD_TODO':
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        list: [...state.list, action.payload],
       }
   }
 }
@@ -100,7 +104,27 @@ const addTodo = (text) => ({
 
 ### Selectors
 
-TODO
+Use selectors to select data from the state. Selectors are functions that take the application state and an optional set of properties and returns some data from the state. This way you can separate your components from the state, which means that you can refactor one without breaking the other.
+
+**Do**
+
+```javascript
+const todosSelector = (state) => ({
+  data: state.todos
+})
+
+connect(todosSelector)(Todos)
+```
+
+**Do NOT do**
+
+```javascript
+connect((state) => ({
+  data: state.todos,
+}))(Todos)
+```
+
+**Protip:** You can use [Reselect](https://github.com/reactjs/reselect) to create memorized selectors if your need to increase the performance of your selectors.
 
 ### Side-effects
 
