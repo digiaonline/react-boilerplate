@@ -6,7 +6,7 @@ Here you can read about our preferred ways of writing code.
 
 Use [Babel](https://babeljs.io/) to transpile your code from modern JavaScript to traditional JavaScript that will run in any browser.
 
-### Classes
+## Classes
 
 Use [ES2015 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) instead of prototype-based inheritance. Having a single declarative form makes class patterns easier to use, and encourages interoperability.
 
@@ -18,7 +18,7 @@ class Todo {
 }
 ```
 
-### Arrow functions
+## Arrow functions
 
 Use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) instead of traditional functions wherever possible.
 
@@ -48,7 +48,7 @@ class Todos {
 }
 ```
 
-What comes to functions, arrow functions are less verbose and more convenient than traditional functions.
+What comes to functions, arrow functions (or function expressions) are more convenient than traditional functions, especially when [currying](https://www.sitepoint.com/currying-in-functional-javascript/), because you do not need to write a `return` statement for each nested function and you can even omit the curly brackets for one-line functions.
 
 **Do**
 
@@ -66,7 +66,11 @@ function addTodo() {
 }
 ```
 
-### Template literals
+### Read more
+
+* [An Introduction to JavaScript ES6 Arrow Functions](https://strongloop.com/strongblog/an-introduction-to-javascript-es6-arrow-functions/)
+
+## Template literals
 
 Use [template literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals) instead of string concatenation. Template literals allow for embedded expressions and you can use them even with multi-line strings.
 
@@ -84,7 +88,7 @@ const hello = 'Hello ' + name + '!' +
 'This syntax is not so convenient.'
 ```
 
-### Destructing assignment
+## Destructing assignment
 
 Use [destructing assignment](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) wherever possible. Destructing allows for a shorter syntax that is easier to read.
 
@@ -110,7 +114,7 @@ const Todos = (props) =>
   </ul>
 ```
 
-### Spread syntax
+## Spread syntax
 
 Use [spread syntax](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator) whenever possible.
 
@@ -162,7 +166,7 @@ const obj2 = Object.assign({y: 2}, obj)
 const obj2.z = 2
 ```
 
-### Const and Let statements
+## Const and Let statements
 
 Use [const](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const) whenever possible. Note that you can use `const` even for arrays and objects as long as you do not try to assign a new reference to the variable.
 
@@ -200,7 +204,7 @@ for (var i = 0; i < arr.length; i++) {
 
 The traditional [var](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/var) should be avoided at all cost.
 
-### Async functions
+## Async functions
 
 Use [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) instead of [Promise.prototype.then()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then).
 
@@ -252,7 +256,7 @@ Promise.all([
 })
 ```
 
-### Functional style
+## Functional style
 
 Write [functional JavaScript](https://www.sitepoint.com/introduction-functional-javascript/) whenever possible, but keep in mind that some times you are better off with object-oriented JavaScript. Avoid writing imperative JavaScript at all cost.
 
@@ -283,7 +287,7 @@ const capitalizeWords = (str) => {
 console.log(capitalizeWords('The quick brown fox jumps over the lazy dog'))
 ```
 
-### Modules
+## Modules
 
 Use [ES6 modules](https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export) instead of CommonJS or AMD modules.
 
