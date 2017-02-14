@@ -12,7 +12,7 @@ type HelloProps = {
   sayHello: typeof sayHello,
 }
 
-class Hello extends Component {
+export class Hello extends Component {
   props: HelloProps
 
   static defaultProps = {
