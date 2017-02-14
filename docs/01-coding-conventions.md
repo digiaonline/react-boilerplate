@@ -2,15 +2,18 @@
 
 Here you can read about our preferred ways of writing code.
 
-## Babel
+## Compiler
 
-Use [Babel](https://babeljs.io/) to transpile your code from modern JavaScript to traditional JavaScript that will run in any browser.
+Use [Babel](https://babeljs.io/) to compile your code from modern JavaScript to traditional JavaScript that will run in any browser.
 
-### Plugins
+### Presets
 
-TODO
+Babel does not do anything out of the box, you need to add some plugins for it to do anything.
+You are usually best off with the [official presets](https://babeljs.io/docs/plugins/). Most of our projects use the [Stage 2 preset](https://babeljs.io/docs/plugins/preset-stage-2/) (also known as Draft: initial spec), which includes basically everything worth including. We chose to use this  preset because it allows to write code that is easier to read and it is not that likely to change.
 
-### Plugins
+### Learn more
+
+* [The Super Tiny Compiler](https://github.com/thejameskyle/the-super-tiny-compiler)
 
 ## Classes
 
@@ -141,7 +144,7 @@ function addTodo() {
 }
 ```
 
-### Read more
+### Learn more
 
 * [An Introduction to JavaScript ES6 Arrow Functions](https://strongloop.com/strongblog/an-introduction-to-javascript-es6-arrow-functions/)
 
