@@ -200,53 +200,6 @@ for (var i = 0; i < arr.length; i++) {
 
 The traditional [var](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/var) should be avoided at all cost.
 
-### Functional style
-
-Write [functional JavaScript](https://www.sitepoint.com/introduction-functional-javascript/) whenever possible, but keep in mind that some times you are better off with object-oriented JavaScript. Avoid writing imperative JavaScript at all cost.
-
-**Do**
-
-```javascript
-const capitalize = (str) =>
-  [str.charAt(0).toUpperCase(), str.substr(1)].join('')
-
-const processWords = (fn, str) =>
-  str.split(' ').map(fn).join(' ')
-
-console.log(processWords(captialize, 'The quick brown fox jumps over the lazy dog'))
-```
-
-**Do NOT do**
-
-```javascript
-const capitalizeWords = (str) => {
-  let result = []
-  const arr = str.split(' ')
-  for (let i = 0; i < arr.length; i++) {
-    result.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1))
-  }
-  return result.join(' ')
-}
-
-console.log(capitalizeWords('The quick brown fox jumps over the lazy dog'))
-```
-
-### Modules
-
-Use [ES6 modules](https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export) instead of CommonJS or AMD modules.
-
-**Do**
-
-```javascript
-export default () => 'Hello from an ES6 module'
-```
-
-**Do NOT do**
-
-```javascript
-module.exports = () => 'Hello from an old module'
-```
-
 ### Async functions
 
 Use [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) instead of [Promise.prototype.then()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then).
@@ -297,4 +250,51 @@ Promise.all([
 ]).then(([orders, customers]) => {
   console.log(orders, customers)
 })
+```
+
+### Functional style
+
+Write [functional JavaScript](https://www.sitepoint.com/introduction-functional-javascript/) whenever possible, but keep in mind that some times you are better off with object-oriented JavaScript. Avoid writing imperative JavaScript at all cost.
+
+**Do**
+
+```javascript
+const capitalize = (str) =>
+  [str.charAt(0).toUpperCase(), str.substr(1)].join('')
+
+const processWords = (fn, str) =>
+  str.split(' ').map(fn).join(' ')
+
+console.log(processWords(captialize, 'The quick brown fox jumps over the lazy dog'))
+```
+
+**Do NOT do**
+
+```javascript
+const capitalizeWords = (str) => {
+  let result = []
+  const arr = str.split(' ')
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1))
+  }
+  return result.join(' ')
+}
+
+console.log(capitalizeWords('The quick brown fox jumps over the lazy dog'))
+```
+
+### Modules
+
+Use [ES6 modules](https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export) instead of CommonJS or AMD modules.
+
+**Do**
+
+```javascript
+export default () => 'Hello from an ES6 module'
+```
+
+**Do NOT do**
+
+```javascript
+module.exports = () => 'Hello from an old module'
 ```
