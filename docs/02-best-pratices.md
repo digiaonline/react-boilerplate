@@ -148,6 +148,45 @@ Use [React Router](https://github.com/ReactTraining/react-router) to define the 
 
 Use [lodash](https://lodash.com/) or a similar utility library so that you do not need to write your own utility functions. Even though you might think that you do not need an utility library at first, you will need it sooner or later.
 
+## Project structure
+
+Try keep your direction structure as flat as possible and group your code by feature and not by type. It is frustrating to navigate the file tree every time you need to find the selector for the component you are working on or the reducer that you are writing a test for. It is much easier to place all files that are associated with each other under the same directory.
+
+**Note:** Your source code should always be placed in a `src` directory.
+
+**Do**
+
+```
+src/
+  todo/
+    actions.js
+    reducer.js
+    selectors.js
+    spec.js
+    Todos.js
+    todo.css
+  index.js
+  test.js
+```
+
+**Do NOT do**
+
+```
+src/
+  actions/
+    todo.js
+  components/
+    Todos.js
+  reducers/
+    todo.js
+  selectors/
+    todo.js
+  styles
+    todo.css
+spec/
+  todo.js
+```
+
 ## Packaging
 
 TODO
