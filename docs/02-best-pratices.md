@@ -4,7 +4,7 @@ Here you can read about how we build our React applications.
 
 ## Code Style
 
-Use [ESLint](http://eslint.org/) to enforce a code style. The code style should be consistent across each project. We provide a [default style](../.eslintrc), but each team is free to customize it as they see fit.
+Use [ESLint](http://eslint.org/) to enforce a code style. The code style should be consistent across each project. We provide a [default style](../.eslintrc), but each team is free to customize it to their needs.
 
 ## React
 
@@ -191,14 +191,22 @@ spec/
 
 TODO
 
-## Tasks
-
-TODO
-
-## Quality Assurance
+## Scripts
 
 TODO
 
 ## Testing
 
 TODO
+
+## Quality Assurance
+
+Use [Husky](https://github.com/typicode/husky) to ensure that the code works before it is committed.
+
+You should run at least the following before each commit:
+
+- Linting
+- Unit tests
+- Type checking (if applicable)
+
+**Protip:** Husky supports [all Git hooks](https://github.com/typicode/husky/blob/master/HOOKS.md). Simply add the corresponding `npm script` to your `package.json`.
