@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {sayHello} from './actions'
 import {helloSelector} from './selectors'
-import css from './helloCorrect.css'
+import css from './hello.css'
 
 type HelloProps = {
   message: string,
