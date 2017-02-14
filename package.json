@@ -11,10 +11,11 @@
     "lint": "eslint src webpack",
     "start": "webpack-dashboard -c \"#0078af\" -- webpack-dev-server --config webpack/development.babel.js",
     "compile": "webpack -p  --bail --config webpack/production.babel.js",
-    "precommit": "npm-run-all flow lint test",
-    "test": "mocha --compilers js:babel-core/register --require src/test.js --recursive \"src/**/*spec.js\"",
-    "test:coverage": "istanbul cover _mocha -- --compilers js:babel-core/register --require src/test.js --recursive \"src/**/*spec.js\"",
-    "test:watch": "npm run test -- --watch"
+    "precommit": "npm-run-all flow lint test:coverage",
+    "test": "mocha --compilers js:babel-core/register --require ignore-styles src/test.js --recursive \"src/**/*spec.js\"",
+    "test:coverage": "istanbul cover _mocha -- --compilers js:babel-core/register --require ignore-styles src/test.js --recursive \"src/**/*spec.js\"",
+    "test:coverage-html": "yarn run test:coverage -- --report html",
+    "test:watch": "yarn run test -- --watch --reporter min"
   },
   "dependencies": {
     "babel-core": "^6.21.0",
@@ -61,6 +62,7 @@
     "flow-bin": "^0.37.0",
     "flow-typed": "^2.0.0",
     "husky": "^0.12.0",
+    "ignore-styles": "^5.0.1",
     "imports-loader": "^0.7.0",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "^3.2.0",
