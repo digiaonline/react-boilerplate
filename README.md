@@ -9,6 +9,7 @@ Boilerplate for our [React](https://facebook.github.io/react/) applications.
 - [React](https://facebook.github.io/react/) User interface components
 - [Redux](http://redux.js.org/) Predictable state container
 - [Lodash](https://lodash.com/) Utility library
+- [PostCSS](http://postcss.org/) CSS plugins
 - [Babel](https://babeljs.io/) ES.Next transpiler
 - [Eslint](http://eslint.org/) Linting utility
 - [Webpack](https://webpack.js.org/) Module bundler
