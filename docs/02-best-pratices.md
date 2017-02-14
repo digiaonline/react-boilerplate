@@ -83,7 +83,7 @@ Use [FSAs]((https://github.com/acdlite/flux-standard-action)) (short for Flux St
 ```javascript
 const addTodo = (text) => ({
   type: 'ADD_TODO',
-  text,
+  payload: text,
 })
 ```
 
@@ -92,7 +92,7 @@ const addTodo = (text) => ({
 ```javascript
 const addTodo = (text) => ({
   type: 'ADD_TODO',
-  payload: text,
+  text,
 })
 ```
 

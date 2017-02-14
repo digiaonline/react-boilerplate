@@ -78,7 +78,7 @@ Use [template literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Ref
 
 ```javascript
 const hello = `Hello ${name}!
-This syntax is convenient.`
+This syntax is so convenient.`
 ```
 
 **Do NOT do**
