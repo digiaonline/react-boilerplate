@@ -6,5 +6,5 @@ Here you can read about our coding conventions, best practices and more.
 
 ## Table of contents
 
-- [Coding Conventions](./01-coding-convetions.md)
+- [Coding Conventions](./01-coding-conventions.md)
 - [Best Practices](./02-best-pratices.md)
