@@ -18,7 +18,6 @@ export default () => {
   if (module.hot) {
     // $FlowFixMe
     module.hot.accept('./Root', () => {
-      console.log('root updated')
       const nextRoot = require('./Root').default
       renderApp(nextRoot, rootProps)
     })
