@@ -2,9 +2,15 @@
 
 Here you can read about our preferred ways of writing code.
 
-## Modern JavaScript
+## Babel
 
 Use [Babel](https://babeljs.io/) to transpile your code from modern JavaScript to traditional JavaScript that will run in any browser.
+
+### Plugins
+
+TODO
+
+### Plugins
 
 ## Classes
 
@@ -15,6 +21,75 @@ class Todo {
   constructor(text) {
     this.text = text
   }
+}
+```
+
+## Class properties
+
+Use instance properties to define initial values for class properties instead of defining them inside the [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). Constructors are more useful when the class takes its initial values from the outside.
+
+**Note:** You need to include the [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) Babel plugin in order to use class properties.
+
+**Do**
+
+```javascript
+class Todo {
+  text = 'Something to do'
+}
+```
+
+```javascript
+class Todo {
+  constructor(text) {
+    this.text = text
+  }
+}
+```
+
+**Do NOT do**
+
+```javascript
+class Todo {
+  constructor() {
+    this.text = 'Something to do'
+  }
+}
+```
+
+### Static keyword
+
+Use [Static keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static)
+instead of the traditional `Todo.staticMethod` syntax.
+
+**Do**
+
+```javascript
+class Todo {
+  static label = 'Todo'
+
+  static staticMethod() {
+    console.log('Static method has been called')
+  }
+
+  static anotherStaticMethod() {
+    Todo.staticMethod()
+  }
+}
+```
+
+**Do NOT do**
+
+```javascript
+class Todo {}
+
+Todo.label = 'Todo'
+
+Todo.staticMethod = () => {
+  console.log('Static method has been called')
+}
+
+Todo.anotherStaticMethod = () => {
+  Todo.staticMethod()
 }
 ```
 
@@ -70,6 +145,58 @@ function addTodo() {
 
 * [An Introduction to JavaScript ES6 Arrow Functions](https://strongloop.com/strongblog/an-introduction-to-javascript-es6-arrow-functions/)
 
+## Async functions
+
+Use [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) instead of [Promise.prototype.then](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then).
+
+**Do**
+
+```javascript
+try {
+  const response = await fetch('https://example.com')
+  const body = await response.json()
+  console.log(body)
+} catch (error) {
+  console.error(error)
+}
+```
+
+**Do NOT do**
+
+```javascript
+fetch('https://example.com')
+  .then((response) => response.json())
+  .then((body) => {
+    console.log(body)
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+```
+
+Use [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) when running multiple async functions in parallel.
+
+**Do**
+
+```javascript
+const [orders, customers] = await Promise.all([
+  getOrders(),
+  getCustomers(),
+])
+console.log(orders, customers)
+```
+
+**Do NOT do**
+
+```javascript
+Promise.all([
+  getOrders(),
+  getCustomers(),
+]).then(([orders, customers]) => {
+  console.log(orders, customers)
+})
+```
+
 ## Template literals
 
 Use [template literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals) instead of string concatenation. Template literals allow for embedded expressions and you can use them even with multi-line strings.
@@ -116,9 +243,7 @@ const Todos = (props) =>
 
 ## Spread syntax
 
-Use [spread syntax](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator) whenever possible.
-
-The spread syntax is a good replacement for the traditional `Function.prototype.apply` syntax that also allows using `apply` together with the `new` keyword.
+Use [spread syntax](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator) instead of [Function.prototype.apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply).
 
 **Do**
 
@@ -203,58 +328,6 @@ for (var i = 0; i < arr.length; i++) {
 ```
 
 The traditional [var](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/var) should be avoided at all cost.
-
-## Async functions
-
-Use [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) instead of [Promise.prototype.then()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then).
-
-**Do**
-
-```javascript
-try {
-  const response = await fetch('https://example.com')
-  const body = await response.json()
-  console.log(body)
-} catch (error) {
-  console.error(error)
-}
-```
-
-**Do NOT do**
-
-```javascript
-fetch('https://example.com')
-  .then((response) => response.json())
-  .then((body) => {
-    console.log(body)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
-```
-
-Use [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) when running multiple async functions in parallel.
-
-**Do**
-
-```javascript
-const [orders, customers] = await Promise.all([
-  getOrders(),
-  getCustomers(),
-])
-console.log(orders, customers)
-```
-
-**Do NOT do**
-
-```javascript
-Promise.all([
-  getOrders(),
-  getCustomers(),
-]).then(([orders, customers]) => {
-  console.log(orders, customers)
-})
-```
 
 ## Functional style
 
