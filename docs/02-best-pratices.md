@@ -148,7 +148,7 @@ Use [React Router](https://github.com/ReactTraining/react-router) to define the 
 
 Use [lodash](https://lodash.com/) or a similar utility library so that you do not need to write your own utility functions. Even though you might think that you do not need an utility library at first, you will need it sooner or later.
 
-## Project structure
+## Structure
 
 Try keep your direction structure as flat as possible and group your code by feature and not by type. It is frustrating to navigate the file tree every time you need to find the selector for the component you are working on or the reducer that you are writing a test for. It is much easier to place all files that are associated with each other under the same directory.
 
@@ -187,13 +187,11 @@ spec/
   todo.js
 ```
 
-## Packaging
-
-TODO
-
 ## Scripts
 
-TODO
+Use [npm scripts](https://docs.npmjs.com/misc/scripts) to define scripts for your application. The `start` script should start your application and the `test` script should run your test suite. You should also define a `dev` script that runs the application in development mode. Feel free to define additional scripts if necessary.
+
+Traditional task runners such as [Grunt](http://gruntjs.com/) and [Gulp](http://gulpjs.com/) should be avoided at all cost, because they are usually unnecessary.
 
 ## Testing
 
