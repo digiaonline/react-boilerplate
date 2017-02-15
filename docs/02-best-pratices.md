@@ -197,13 +197,17 @@ TODO
 
 ## Testing
 
-TODO
+You should write unit tests at least for the most important parts of your application, because it will make it easier to both develop and refactor the application. Having some unit tests will also make it easier for new developers to join project, as they can verify that everything still works as intended after making a change.
+
+Focus on writing unit tests that ensure that your application is behaves correctly instead of testing every part of the application separately. Testing everything separately is time-consuming and it makes refactoring the application a nightmare, because you will spend a lot of time updating the test cases.
+
+We have found [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/) and [Enzyme](https://github.com/airbnb/enzyme) to be the best libraries for testing React applications.
 
 ## Quality Assurance
 
 Use [Husky](https://github.com/typicode/husky) to ensure that the code works before it is committed.
 
-You should run at least the following before each commit:
+You should run at least the following tasks before each commit:
 
 - Linting
 - Unit tests
