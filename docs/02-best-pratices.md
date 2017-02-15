@@ -213,11 +213,16 @@ Plugins are most commonly used for manipulating your application bundle. Plugins
 
 ## Scripts
 
-Use [npm scripts](https://docs.npmjs.com/misc/scripts) to define scripts for your application. The `start` script should start your application and the `test` script should run your test suite. You should also define a `dev` script that runs the application in development mode and a `compile` script that builds the application for production use. Feel free to define additional scripts if necessary.
+Use [npm scripts](https://docs.npmjs.com/misc/scripts) instead of task runners like [Grunt](http://gruntjs.com/) and [Gulp](http://gulpjs.com/) to define scripts for your application.
 
-**Protip:** Remember to test your production build every now to make sure that it works.
+You should define at least the following scripts:
 
-**Note:** Traditional task runners such as [Grunt](http://gruntjs.com/) and [Gulp](http://gulpjs.com/) should be avoided at all cost, because they are usually unnecessary.
+- `start` starts the application
+- `test` runs the test suite
+- `dev` runs the application in development mode
+- `compile` builds the application for production
+
+**Note:** Remember to test your production build every now to make sure that it works.
 
 ## Testing
 
