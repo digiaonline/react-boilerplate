@@ -187,6 +187,30 @@ spec/
   todo.js
 ```
 
+## Bundling
+
+Use [Webpack](https://webpack.js.org/) to package your application for the browser. Webpack has four core concepts: entry, output, loaders and plugins.
+
+### Entry
+
+Webpack create bundle for your application based on a dependency graph. The root of this graph is know as an entry point. Webpack starts from the entry point and follows the dependency graph to know what to include in the the bundle. Entry is defined using the [entry](https://webpack.js.org/configuration/entry-context/#entry) property in the configuration.
+
+### Output
+
+You can tell Webpack what do with your application bundle by configuring its output. Output is defined using the [output](https://webpack.js.org/configuration/output) property in the configuration.
+
+### Loaders
+
+Loaders in Webpack transform files into modules as they are added to the dependency graph. Loaders can be used to include any type of files in your bundle, because they transform those files into JavaScript. Loaders are defined using the [module.rules](https://webpack.js.org/configuration/module/#module-rules) property in the configuration.
+
+### Plugins
+
+Plugins are most commonly used for manipulating your application bundle. Plugins are defined using the [plugins](https://webpack.js.org/configuration/plugins/) array in the configuration and most plugins are customizable via its own options. Since plugins can be used multiple times in the same configuration, you need to create an instance of it by calling it with `new`.
+
+### Learn more
+
+* [Webpack Guides](https://webpack.js.org/guides/)
+
 ## Scripts
 
 Use [npm scripts](https://docs.npmjs.com/misc/scripts) to define scripts for your application. The `start` script should start your application and the `test` script should run your test suite. You should also define a `dev` script that runs the application in development mode. Feel free to define additional scripts if necessary.
