@@ -15,7 +15,7 @@ You can find our documentation [here](./docs/README.md).
 - [Lodash](https://lodash.com/) Utility library
 - [PostCSS](http://postcss.org/) CSS plugins
 - [Babel](https://babeljs.io/) ES.Next transpiler
-- [Eslint](http://eslint.org/) Linting utility
+- [ESLint](http://eslint.org/) Linting utility
 - [Webpack](https://webpack.js.org/) Module bundler
 - [Mocha](https://mochajs.org/) Testing framework
 - [Chai](http://chaijs.com/) Assertion library
