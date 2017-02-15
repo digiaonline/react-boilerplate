@@ -2,6 +2,10 @@
 
 Boilerplate for our [React](https://facebook.github.io/react/) applications.
 
+## How do I use this?
+
+You can find our documentation [here](./docs/README.md).
+
 ## What's in the box?
 
 - [Flowtype](https://flowtype.org/) Type checker
@@ -11,7 +15,7 @@ Boilerplate for our [React](https://facebook.github.io/react/) applications.
 - [Lodash](https://lodash.com/) Utility library
 - [PostCSS](http://postcss.org/) CSS plugins
 - [Babel](https://babeljs.io/) ES.Next transpiler
-- [Eslint](http://eslint.org/) Linting utility
+- [ESLint](http://eslint.org/) Linting utility
 - [Webpack](https://webpack.js.org/) Module bundler
 - [Mocha](https://mochajs.org/) Testing framework
 - [Chai](http://chaijs.com/) Assertion library
