@@ -2,10 +2,6 @@
 
 Here you can read about how we build our React applications.
 
-## Code Style
-
-Use [ESLint](http://eslint.org/) to enforce a code style. The code style should be consistent across each project. We provide a [default style](../.eslintrc), but each team is free to customize it to their needs.
-
 ## React
 
 [React](https://facebook.github.io/react/) is a library from Facebook for building user interfaces.
@@ -130,7 +126,7 @@ connect((state) => ({
 
 Use [Redux Saga](https://redux-saga.github.io/redux-saga/) and its [side-effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) to separate your components from your application state in complex applications. This will allow you to simplify more complex applications, because your components can dispatch actions that will be handled by the side-effects.
 
-### Learn more
+### Resources
 
 * [Getting Started with Redux](https://egghead.io/courses/getting-started-with-redux)
 * [Building React Applications with Idiomatic Redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
@@ -186,43 +182,6 @@ src/
 spec/
   todo.js
 ```
-
-## Bundling
-
-Use [Webpack](https://webpack.js.org/) to package your application for the browser. Webpack has four core concepts: entry, output, loaders and plugins.
-
-### Entry
-
-Webpack create bundle for your application based on a dependency graph. The root of this graph is know as an entry point. Webpack starts from the entry point and follows the dependency graph to know what to include in the the bundle. Entry is defined using the [entry](https://webpack.js.org/configuration/entry-context/#entry) property in the configuration.
-
-### Output
-
-You can tell Webpack what do with your application bundle by configuring its output. Output is defined using the [output](https://webpack.js.org/configuration/output) property in the configuration.
-
-### Loaders
-
-Loaders in Webpack transform files into modules as they are added to the dependency graph. Loaders can be used to include any type of files in your bundle, because they transform those files into JavaScript. Loaders are defined using the [module.rules](https://webpack.js.org/configuration/module/#module-rules) property in the configuration.
-
-### Plugins
-
-Plugins are most commonly used for manipulating your application bundle. Plugins are defined using the [plugins](https://webpack.js.org/configuration/plugins/) array in the configuration and most plugins are customizable via its own options. Since plugins can be used multiple times in the same configuration, you need to create an instance of it by calling it with `new`.
-
-### Learn more
-
-* [Webpack Guides](https://webpack.js.org/guides/)
-
-## Scripts
-
-Use [npm scripts](https://docs.npmjs.com/misc/scripts) instead of task runners like [Grunt](http://gruntjs.com/) and [Gulp](http://gulpjs.com/) to define scripts for your application.
-
-You should define at least the following scripts:
-
-- `start` starts the application
-- `test` runs the test suite
-- `dev` runs the application in development mode
-- `compile` builds the application for production
-
-**Note:** Remember to test your production build every now to make sure that it works.
 
 ## Testing
 
