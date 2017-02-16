@@ -87,6 +87,8 @@ Todo.anotherStaticMethod = () => {
 
 Use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) instead of traditional functions wherever possible.
 
+### Class methods
+
 Arrow functions are especially useful in class methods, because arrow functions share the same lexical **this** (or scope) with the surrounding code, so no binding is required.
 
 **Do**
@@ -113,7 +115,11 @@ class Todos {
 }
 ```
 
-What comes to functions, arrow functions (or function expressions) are more convenient than traditional functions, especially when [currying](https://www.sitepoint.com/currying-in-functional-javascript/), because you do not need to write a `return` statement for each nested function and you can even omit the curly brackets for one-line functions.
+### Function expressions
+
+Arrow functions (or function expressions) are more convenient than traditional functions, especially when [currying](https://www.sitepoint.com/currying-in-functional-javascript/), because you do not need to add a `return` statement for each nested function and you can even omit the curly brackets for one-line functions.
+
+**NOTE:** Functions that are defined using the `function` keyword (or named functions) are [hoisted](https://www.sitepoint.com/back-to-basics-javascript-hoisting/) to the top of the scope, which means that you can invoke them even before they are defined. This can promote bad design and cause confusion.
 
 **Do**
 
