@@ -6,7 +6,7 @@ Here you can read about the tools we prefer.
 
 Use [Flow](https://flowtype.org/) to perform type-checking on your code when possible.
 
-Flow is so much more than simple type definitions for your classes, functions and variables. The real value is the fact that it can spot hard-to-miss errors in your code while you are writing it. In fact, if your have type definitions for all of your project, it will most likely work as intended. It will also make your code more solid and easier to read, because you do not need to perform null checks all around.
+Flow is so much more than simple type definitions for your classes, functions and variables. The real value is the fact that it can spot hard-to-miss errors in your code while you are writing it. In fact, if your have type definitions for all of your project, it will most likely work as intended. It will also make your code easier to read, because you do not need to perform null checks all around.
 
 For building [React](https://facebook.github.io/react/) application we prefer Flow over [Typescript](https://www.typescriptlang.org/), because it has better [type definitions for React](https://flowtype.org/docs/react.html).
 
@@ -14,15 +14,15 @@ For building [React](https://facebook.github.io/react/) application we prefer Fl
 
 - [Getting started with Flow](https://flowtype.org/docs/getting-started.html#_)
 
-## Linting
+## Code style
 
 Use [ESLint](http://eslint.org/) to enforce a code style. The code style should be consistent across each project. Our [default style](../.eslintrc) includes rules that will help you to produce code that is easy to read, write and review. You do not have to use the default style, feel free to customize the style to meet needs of your project.
+
+**Protip:** Use the [--fix](http://eslint.org/docs/user-guide/command-line-interface#fix) flag to update code to match your code style. However, note that all problems are not fixable by using this option.
 
 ### Resources
 
 - [List of available rules](http://eslint.org/docs/rules/)
-
-**Protip:** Use the [--fix](http://eslint.org/docs/user-guide/command-line-interface#fix) flag to update code to match your code style. However, note that all problems are not fixable by using this option.
 
 ## Compiler
 
@@ -31,7 +31,7 @@ Use [Babel](https://babeljs.io/) to transform your code from modern JavaScript t
 ### Presets
 
 Babel does not do anything out of the box, you need to add some plugins for it to do anything.
-You are usually best off with the [official presets](https://babeljs.io/docs/plugins/). Most of our projects use the [Stage 2 preset](https://babeljs.io/docs/plugins/preset-stage-2/) (also known as Draft: initial spec), which includes basically everything worth including. We chose to use this preset because it allows to write code that is easier to read and it is not that likely to change.
+You are usually best off with the [official presets](https://babeljs.io/docs/plugins/). We recommend that you use the [Stage 2 preset](https://babeljs.io/docs/plugins/preset-stage-2/) (also known as Draft: initial spec), because it includes pretty much everything worth including. We prefer this particular preset because it allows to write code that is easier to both read and write.
 
 ### Learn more
 
@@ -61,7 +61,7 @@ Plugins are most commonly used for manipulating your application bundle. Plugins
 
 * [Webpack Guides](https://webpack.js.org/guides/)
 
-## Dependency management
+## Dependencies
 
 Use [Yarn](https://yarnpkg.com/en/) to manage the dependencies in your project instead of [NPM](https://www.npmjs.com/). Yarn allow you to get consistent installs across all systems thanks to its [lock-file](https://yarnpkg.com/en/docs/yarn-lock). Yarn's lock-file is superior to NPM's `npm-shrinkwrap.json` because it actually locks the dependencies, while shrinkwrap does not.
 
@@ -82,4 +82,4 @@ You should define at least the following scripts:
 - `dev` runs the application in development mode
 - `compile` builds the application for production
 
-**Note:** Remember to test your production build every now to make sure that it works.
+**Note:** Remember to test your production build every now and then to make sure that it works.

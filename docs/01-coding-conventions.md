@@ -49,7 +49,7 @@ class Todo {
 ### Static keyword
 
 Use [Static keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static)
-instead of the traditional `Todo.staticMethod` syntax.
+instead of the traditional `Todo.staticMethod` syntax because it will allow you to contain all code related to particular class inside the class itself.
 
 **Do**
 
@@ -85,11 +85,11 @@ Todo.anotherStaticMethod = () => {
 
 ## Arrow functions
 
-Use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) instead of traditional functions wherever possible.
+Use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) instead of traditional functions because they share the same lexical **this** (or scope) with the surrounding code, which is desirable in most cases. 
 
 ### Class methods
 
-Arrow functions are especially useful in class methods, because arrow functions share the same lexical **this** (or scope) with the surrounding code, so no binding is required.
+Arrow functions are especially useful as class methods, because you do not need to bind every method to the scope separately.
 
 **Do**
 
@@ -119,7 +119,7 @@ class Todos {
 
 Arrow functions (or function expressions) are more convenient than traditional functions, especially when [currying](https://www.sitepoint.com/currying-in-functional-javascript/), because you do not need to add a `return` statement for each nested function and you can even omit the curly brackets for one-line functions.
 
-**NOTE:** Functions that are defined using the `function` keyword (or named functions) are [hoisted](https://www.sitepoint.com/back-to-basics-javascript-hoisting/) to the top of the scope, which means that you can invoke them even before they are defined. This can promote bad design and cause confusion.
+**Note:** Functions that are defined using the `function` keyword (also known as named functions) are [hoisted](https://www.sitepoint.com/back-to-basics-javascript-hoisting/) to the top of the scope, which means that you can invoke them even before they are defined. This can promote bad design and cause confusion.
 
 **Do**
 
@@ -331,7 +331,7 @@ for (var i = 0; i < arr.length; i++) {
 
 ## Functional style
 
-Write [functional JavaScript](https://www.sitepoint.com/introduction-functional-javascript/) whenever possible, but keep in mind that some times you are better off with object-oriented JavaScript. Avoid writing imperative JavaScript at all cost.
+Write [functional JavaScript](https://www.sitepoint.com/introduction-functional-javascript/) when possible, but keep in mind that some times you are better off with object-oriented JavaScript. Avoid writing imperative JavaScript at all cost.
 
 **Do**
 
@@ -342,7 +342,7 @@ const capitalize = (str) =>
 const processWords = (fn, str) =>
   str.split(' ').map(fn).join(' ')
 
-console.log(processWords(captialize, 'The quick brown fox jumps over the lazy dog'))
+console.log(processWords(capitalize, 'The quick brown fox jumps over the lazy dog'))
 ```
 
 **Do NOT do**
@@ -362,7 +362,7 @@ console.log(capitalizeWords('The quick brown fox jumps over the lazy dog'))
 
 ## Modules
 
-Use [ES6 modules](https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export) instead of CommonJS or AMD modules.
+Use [ES6 modules](https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export) instead of CommonJS or AMD modules because it is the standard way of defining modules.
 
 **Do**
 
