@@ -137,6 +137,7 @@ You can use [this very project](https://github.com/nordsoftware/react-boilerplat
 * [Getting Started with Redux](https://egghead.io/courses/getting-started-with-redux)
 * [Building React Applications with Idiomatic Redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 * [Redux side-effects and You](https://medium.com/javascript-and-opinions/redux-side-effects-and-you-66f2e0842fc3#.2z19w8rhk)
+* [Troubleshooting](http://redux.js.org/docs/Troubleshooting.html)
 
 ## Routing
 
