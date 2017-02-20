@@ -2,6 +2,10 @@
 
 Boilerplate for our [React](https://facebook.github.io/react/) applications.
 
+## Why do I want this?
+
+As you probably know, there are numerous boilerplates avaliable for React, so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you do not always need. Our boilerplate provides you with a great starting point for any React project, especially if you want to use [Flowtype](https://flowtype.org/).
+
 ## How do I use this?
 
 You can find our documentation [here](./docs/README.md).
