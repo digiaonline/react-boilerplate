@@ -1,4 +1,4 @@
-# React Boilerplate by [Nord Software](https://nordsoftware.com)
+# React Boilerplate
 
 Boilerplate for our [React](https://facebook.github.io/react/) applications.
 
