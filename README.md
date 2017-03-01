@@ -1,5 +1,10 @@
 # React Boilerplate
 
+[![Build Status](https://travis-ci.org/nordsoftware/react-boilerplate.svg?branch=master)](https://travis-ci.org/nordsoftware/react-boilerplate)
+[![Code Climate](https://codeclimate.com/github/nordsoftware/react-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/nordsoftware/react-boilerplate)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Gitter](https://img.shields.io/gitter/room/norsoftware/open-source.svg?maxAge=2592000)](https://gitter.im/nordsoftware/open-source)
+
 Boilerplate for our [React](https://facebook.github.io/react/) applications.
 
 ## Why do I want this?
