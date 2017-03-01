@@ -10,11 +10,11 @@ node_js:
   - "4"
 
 script:
-  - npm run ci
+  - yarn run ci
 
 after_script:
   - codeclimate-test-reporter < coverage/lcov.info
 
 addons:
     code_climate:
-        repo_token: 9eac8d2b468e15ffa2109c1984945db4230ab94232c64064a9a658b17be43c14
+        repo_token: 753a14a3b133f03838b85263c71d52c8e8f1396967532a26e8c2ebca75e6cc79
