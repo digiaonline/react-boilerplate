@@ -34,43 +34,61 @@ You can find our documentation [here](./docs/README.md).
 
 ## Usage
 
+#### Download and unpack
+
+Download the project as a zip archive and unpack it.
+
+```bash
+wget https://github.com/nordsoftware/react-boilerplate/archive/master.zip
+unzip master.zip
+mv react-boilerplate-master my-project
+```
+
 #### Install dependencies
+
+Install the project dependencies using Yarn.
 
 ```bash
 yarn
 ```
 
-#### Start the development server
+#### Development server
+
+You can start the development server with the `start` script.
 
 ```bash
 yarn start
 ```
 
-#### Compile the distribution build
+#### Distribution build
+
+You can compile the distribution build with the `compile` script.
 
 ```bash
 yarn run compile
 ```
 ## Test
 
-#### Run the test suite
+#### Test suite
+
+You can run the test suite with the `test` script.
 
 ```bash
 yarn test
 ```
 
-#### Run the test suit in watch mode
+**Protip:** You can also run the test suite in watch mode with the `test:watch` script.
 
-```
-yarn run test:watch
-```
+#### Test coverage report
 
-#### Generate the test coverage report
+You can generate the test coverage report with the `test:coverage` script.
 
 ```
 yarn run test:coverage
 ```
 
+**Protip:** You can also generate the test coverage report in HTML with the `test:coverage-html` script.
+
 ## License
 
-See [LICENSE](LICENSE).
+[MIT](LICENSE)
