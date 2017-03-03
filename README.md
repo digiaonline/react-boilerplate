@@ -34,7 +34,7 @@ You can find our documentation [here](./docs/README.md).
 
 ## Usage
 
-#### Download and unpack
+### Download and unpack
 
 Download the project as a zip archive and unpack it.
 
@@ -44,7 +44,7 @@ unzip master.zip
 mv react-boilerplate-master my-project
 ```
 
-#### Install dependencies
+### Install dependencies
 
 Install the project dependencies using Yarn.
 
@@ -52,7 +52,7 @@ Install the project dependencies using Yarn.
 yarn
 ```
 
-#### Development server
+### Development server
 
 You can start the development server with the `start` script.
 
@@ -60,7 +60,7 @@ You can start the development server with the `start` script.
 yarn start
 ```
 
-#### Distribution build
+### Distribution build
 
 You can compile the distribution build with the `compile` script.
 
@@ -69,7 +69,7 @@ yarn run compile
 ```
 ## Test
 
-#### Test suite
+### Test suite
 
 You can run the test suite with the `test` script.
 
@@ -79,7 +79,7 @@ yarn test
 
 **Protip:** You can also run the test suite in watch mode with the `test:watch` script.
 
-#### Test coverage report
+### Test coverage report
 
 You can generate the test coverage report with the `test:coverage` script.
 
