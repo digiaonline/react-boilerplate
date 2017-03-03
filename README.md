@@ -6,11 +6,11 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/norsoftware/open-source.svg?maxAge=2592000)](https://gitter.im/nordsoftware/open-source)
 
-Boilerplate for our [React](https://facebook.github.io/react/) applications.
+[React Boilerplate](https://github.com/nordsoftware/react-boilerplate/) by [Nord Software](https://github.com/nordsoftware/).
 
 ## Why do I want this?
 
-As you probably know, there are numerous boilerplates avaliable for React, so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you do not always need. Our boilerplate provides you with a great starting point for any React project, especially if you want to use [Flowtype](https://flowtype.org/).
+As you probably know, there are numerous boilerplates avaliable for [React](https://facebook.github.io/react/), so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you rarely need. Our boilerplate provides you with a great starting point for any React project with as few lines of code as possible, especially if you want to use [Flowtype](https://flowtype.org/). We strive to remove any code that turns out to be unnecessary.
 
 ## How do I use this?
 
@@ -36,13 +36,15 @@ You can find our documentation [here](./docs/README.md).
 
 ### Download and unpack
 
-Download the project as a zip archive and unpack it.
+Download the project as a zip archive, extract it and move it where you want.
 
 ```bash
 wget https://github.com/nordsoftware/react-boilerplate/archive/master.zip
 unzip master.zip
 mv react-boilerplate-master my-project
 ```
+
+**Protip:** You can also clone the project and remove the `.git` folder.
 
 ### Install dependencies
 
@@ -79,7 +81,7 @@ yarn test
 
 **Protip:** You can also run the test suite in watch mode with the `test:watch` script.
 
-### Test coverage report
+### Coverage report
 
 You can generate the test coverage report with the `test:coverage` script.
 
