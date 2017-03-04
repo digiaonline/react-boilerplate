@@ -43,8 +43,6 @@ npm i -g create-project
 create-project my-project nordsoftware/react-boilerplate
 ```
 
-**Protip:** You can also clone the project and remove the `.git` folder.
-
 ### Install dependencies
 
 Install the project dependencies using Yarn.
