@@ -34,14 +34,13 @@ You can find our documentation [here](./docs/README.md).
 
 ## Usage
 
-### Download and unpack
+### Create project
 
-Download the project as a zip archive, extract it and move it where you want.
+Install [create-project](https://www.npmjs.com/package/create-project) and create your project.
 
 ```bash
-wget https://github.com/nordsoftware/react-boilerplate/archive/master.zip
-unzip master.zip
-mv react-boilerplate-master my-project
+npm i -g create-project
+create-project my-project nordsoftware/react-boilerplate
 ```
 
 **Protip:** You can also clone the project and remove the `.git` folder.
