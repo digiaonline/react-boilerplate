@@ -33,6 +33,7 @@
     "eslint": "^3.12.2",
     "eslint-plugin-flowtype": "^2.30.0",
     "extract-text-webpack-plugin": "beta",
+    "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.24.1",
     "lodash": "^4.17.2",
     "normalize.css": "^5.0.0",
