@@ -35,6 +35,7 @@
     "extract-text-webpack-plugin": "beta",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.24.1",
+    "image-webpack-loader": "^3.3.0",
     "lodash": "^4.17.2",
     "normalize.css": "^5.0.0",
     "offline-plugin": "^4.5.3",
