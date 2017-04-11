@@ -155,6 +155,29 @@ module.exports = {
               cacheDirectory: true,
             },
           },
+          // {
+          //   test: /\.(gif|png|jpe?g|svg|ttf|eot)$/i,
+          //   loaders: [
+          //     'file-loader?hash=sha512&digest=hex&name=[hash].[ext]', {
+          //       loader: 'image-webpack-loader',
+          //       query: {
+          //         mozjpeg: {
+          //           progressive: true,
+          //         },
+          //         gifsicle: {
+          //           interlaced: false,
+          //         },
+          //         optipng: {
+          //           optimizationLevel: 4,
+          //         },
+          //         pngquant: {
+          //           quality: '75-90',
+          //           speed: 3,
+          //         },
+          //       },
+          //     }
+          //   ],
+          // },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.
