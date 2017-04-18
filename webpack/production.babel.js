@@ -11,7 +11,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 
 const context = path.resolve(__dirname, '..')
-const extractStylesPlugin = new ExtractTextPlugin('[name].[hash].css')
+const extractStylesPlugin = new ExtractTextPlugin({filename: '[name].[hash].css', ignoreOrder: true})
 
 export default createConfig({
   context,
