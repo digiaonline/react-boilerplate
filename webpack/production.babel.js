@@ -11,7 +11,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from 'offline-plugin'
 
 const context = path.resolve(__dirname, '..')
-const extractStylesPlugin = new ExtractTextPlugin('[name].[hash].css')
+const extractStylesPlugin = new ExtractTextPlugin({filename: '[name].[hash].css', ignoreOrder: true})
 
 export default createConfig({
   context,
@@ -33,8 +33,8 @@ export default createConfig({
       {
         test: /\.css$/,
         loader: extractStylesPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
+          fallback: 'style-loader',
+          use: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
         }),
       },
     ],
