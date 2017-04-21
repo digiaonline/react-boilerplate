@@ -1,6 +1,6 @@
 // @flow
 
-import flowRight from 'lodash/flowRight'
+import flow from 'lodash/flow'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {sayHello} from './actions'
@@ -9,8 +9,8 @@ import css from './Hello.css'
 
 type HelloProps = {
   message: string,
-  sayHello: typeof sayHello,
-}
+  sayHello: typeof sayHello
+};
 
 export class Hello extends Component {
   props: HelloProps
@@ -34,6 +34,6 @@ export class Hello extends Component {
   }
 }
 
-export default flowRight(
-  connect(helloSelector, {sayHello}),
+export default flow(
+  connect(helloSelector, {sayHello})
 )(Hello)
