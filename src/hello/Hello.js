@@ -10,7 +10,7 @@ import css from './Hello.css'
 type HelloProps = {
   message: string,
   sayHello: typeof sayHello
-};
+}
 
 export class Hello extends Component {
   props: HelloProps

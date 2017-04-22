@@ -22,8 +22,4 @@ export default () => {
       renderApp(nextRoot, rootProps)
     })
   }
-
-  if (process.env.NODE_ENV === 'production') {
-    require('./enableOfflineMode')
-  }
 }

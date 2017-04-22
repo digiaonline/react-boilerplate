@@ -7,7 +7,7 @@ import type {Reducer} from '../types'
 import type {ReplyAction} from './types'
 
 export const messageReducer: Reducer<string> = handleActions({
-  ['REPLY']: (state, {payload: message}: ReplyAction) => message,
+  REPLY: (state, {payload: message}: ReplyAction) => message,
 }, '')
 
 export default combineReducers({

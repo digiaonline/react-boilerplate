@@ -1,4 +1,0 @@
-instrumentation:
-  root: ./src
-  default-excludes: true
-  excludes: ['**/mock.js', '**/spec.js']

@@ -18,5 +18,3 @@ ratings:
   - "**.js"
 exclude_paths:
   - defs
-  - flow-typed
-  - webpack

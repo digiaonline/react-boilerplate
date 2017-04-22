@@ -10,7 +10,7 @@
 
 ## Why do I want this?
 
-As you probably know, there are numerous boilerplates avaliable for [React](https://facebook.github.io/react/), so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you rarely need. Our boilerplate provides you with a great starting point for any React project with as few lines of code as possible, especially if you want to use [Flowtype](https://flowtype.org/). We strive to remove any code that turns out to be unnecessary.
+As you probably know, there are numerous boilerplates available for [React](https://facebook.github.io/react/), so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you rarely need. Our boilerplate was bootstrapped with [Create React App](https://github.com/facebook-incubator/create-react-app) and provides you with a great starting point for any React project with as few lines of code as possible, especially if you want to use [Flowtype](https://flowtype.org/).
 
 ## How do I use this?
 
@@ -27,8 +27,7 @@ You can find our documentation [here](./docs/README.md).
 - [Babel](https://babeljs.io/) ES.Next transpiler
 - [ESLint](http://eslint.org/) Linting utility
 - [Webpack](https://webpack.js.org/) Module bundler
-- [Mocha](https://mochajs.org/) Testing framework
-- [Chai](http://chaijs.com/) Assertion library
+- [Jest](https://facebook.github.io/jest/) Testing framework
 - [Enzyme](https://github.com/airbnb/enzyme) React testing utilities
 - And more...
 
@@ -39,7 +38,7 @@ You can find our documentation [here](./docs/README.md).
 Install [create-project](https://www.npmjs.com/package/create-project) and create your project.
 
 ```bash
-npm i -g create-project
+yarn global add create-project
 create-project my-project nordsoftware/react-boilerplate
 ```
 

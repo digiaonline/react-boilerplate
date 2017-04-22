@@ -1,6 +1,6 @@
 // @flow
 
-import {takeLatest} from 'redux-saga'
+import {takeLatest} from 'redux-saga/effects'
 import {fork, put} from 'redux-saga/effects'
 import {reply} from './actions'
 

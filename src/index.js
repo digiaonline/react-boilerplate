@@ -1,6 +1,4 @@
-// @flow
-
 import startApp from './root/startApp'
-import './global.css'
+import './index.css'
 
 startApp()
