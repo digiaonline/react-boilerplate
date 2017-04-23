@@ -2602,6 +2602,10 @@ har-validator@~4.2.1:
     ajv "^4.9.1"
     har-schema "^1.0.5"
 
+harmony-reflect@^1.4.6:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/harmony-reflect/-/harmony-reflect-1.5.1.tgz#b54ca617b00cc8aef559bbb17b3d85431dc7e329"
+
 has-ansi@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -2779,6 +2783,12 @@ iconv-lite@~0.4.13:
 icss-replace-symbols@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/icss-replace-symbols/-/icss-replace-symbols-1.0.2.tgz#cb0b6054eb3af6edc9ab1d62d01933e2d4c8bfa5"
+
+identity-obj-proxy@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"
+  dependencies:
+    harmony-reflect "^1.4.6"
 
 ieee754@^1.1.4:
   version "1.1.8"
@@ -5074,6 +5084,13 @@ react-router@3:
     loose-envify "^1.2.0"
     prop-types "^15.5.6"
     warning "^3.0.0"
+
+react-test-renderer@^15.5.4:
+  version "15.5.4"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.5.4.tgz#d4ebb23f613d685ea8f5390109c2d20fbf7c83bc"
+  dependencies:
+    fbjs "^0.8.9"
+    object-assign "^4.1.0"
 
 react@^15.5.4:
   version "15.5.4"
