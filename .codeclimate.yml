@@ -17,4 +17,4 @@ ratings:
   - "**.css"
   - "**.js"
 exclude_paths:
-  - defs
+  - decls
