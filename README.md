@@ -6,30 +6,33 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/norsoftware/open-source.svg?maxAge=2592000)](https://gitter.im/nordsoftware/open-source)
 
-[React Boilerplate](https://github.com/nordsoftware/react-boilerplate/) by [Nord Software](https://github.com/nordsoftware/).
+A [Nord Software](https://github.com/nordsoftware/) project.
 
 ## Why do I want this?
 
 As you probably know, there are numerous boilerplates available for [React](https://facebook.github.io/react/), so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you rarely need. Our boilerplate was bootstrapped with [Create React App](https://github.com/facebook-incubator/create-react-app) and provides you with a great starting point for any React project with as few lines of code as possible, especially if you want to use [Flowtype](https://flowtype.org/).
 
-## How do I use this?
+## What do I need to get started?
 
-You can find our documentation [here](./docs/README.md).
+- [Node](https://nodejs.org/en/download/) (version 6 or later)
+- [Yarn](https://yarnpkg.com/lang/en/docs/install/)
 
 ## What's in the box?
 
 - [Flowtype](https://flowtype.org/) Type checker
-- [Yarn](https://yarnpkg.com/) Dependency manager
 - [React](https://facebook.github.io/react/) User interface components
 - [Redux](http://redux.js.org/) Predictable state container
 - [Lodash](https://lodash.com/) Utility library
-- [PostCSS](http://postcss.org/) CSS plugins
-- [Babel](https://babeljs.io/) ES.Next transpiler
-- [ESLint](http://eslint.org/) Linting utility
+- [PostCSS](http://postcss.org/) CSS transformer
+- [Babel](https://babeljs.io/) JavaScript transpiler
+- [ESLint](http://eslint.org/) JavaScript Linter
+- [Stylelint](https://stylelint.io/) CSS Linter
 - [Webpack](https://webpack.js.org/) Module bundler
-- [Jest](https://facebook.github.io/jest/) Testing framework
-- [Enzyme](https://github.com/airbnb/enzyme) React testing utilities
-- And more...
+- [Jest](https://facebook.github.io/jest/) Testing solution
+
+## How do I use this?
+
+You can find our documentation [here](./docs/README.md).
 
 ## Usage
 
@@ -39,7 +42,7 @@ Install [create-project](https://www.npmjs.com/package/create-project) and creat
 
 ```bash
 yarn global add create-project
-create-project my-project nordsoftware/react-boilerplate
+create-project my-project nordsoftware/react-boilerplate#next && cd my-project
 ```
 
 ### Install dependencies
@@ -48,6 +51,14 @@ Install the project dependencies using Yarn.
 
 ```bash
 yarn
+```
+
+### Create the environment
+
+Create your environment by copying the example environment.
+
+```bash
+cp .env.example .env
 ```
 
 ### Development server
@@ -60,10 +71,10 @@ yarn start
 
 ### Distribution build
 
-You can compile the distribution build with the `compile` script.
+You can compile the distribution build with the `build` script.
 
 ```bash
-yarn run compile
+yarn run build
 ```
 ## Test
 
@@ -74,18 +85,6 @@ You can run the test suite with the `test` script.
 ```bash
 yarn test
 ```
-
-**Protip:** You can also run the test suite in watch mode with the `test:watch` script.
-
-### Coverage report
-
-You can generate the test coverage report with the `test:coverage` script.
-
-```
-yarn run test:coverage
-```
-
-**Protip:** You can also generate the test coverage report in HTML with the `test:coverage-html` script.
 
 ## License
 
