@@ -17,4 +17,7 @@ ratings:
   - "**.css"
   - "**.js"
 exclude_paths:
+  - build
+  - config
   - decls
+  - scripts
