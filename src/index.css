@@ -1,5 +1,5 @@
-@import "../node_modules/normalize.css/normalize.css";
-@import "./styles/typography.css";
+@import '../node_modules/normalize.css/normalize.css';
+@import './styles/typography.css';
 
 :global #root {
   display: flex;
@@ -13,9 +13,7 @@ html {
 body {
   display: flex;
   min-height: 100%;
-
   margin: 0;
   padding: 0;
-
   font-family: var(--font-serif);
 }
