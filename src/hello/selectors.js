@@ -1,8 +1,12 @@
+import {createSelector} from 'reselect'
 import type {Selector} from '../../types'
 
-const getMessage: Selector<string> = (state) =>
+export const getMessage: Selector<string> = (state) =>
   state.hello.message
 
-export const helloSelector: Selector<mixed> = (state) => ({
-  message: getMessage(state),
-})
+export const helloSelector: Selector<any> = createSelector(
+  [getMessage],
+  (message: string) => ({
+    message
+  })
+)

@@ -10,7 +10,8 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.2",
-    "redux-saga": "^0.14.7"
+    "redux-saga": "^0.14.7",
+    "reselect": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "6.22.1",

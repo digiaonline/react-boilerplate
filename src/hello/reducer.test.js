@@ -1,7 +1,7 @@
 import {reply} from './actions'
 import {messageReducer} from './reducer'
 
-test('Hello message reducer should update state on reply action', () => {
+test('Message reducer state matches snapshot', () => {
   const state = messageReducer('', reply('Hello from Jest.'))
-  expect(state).toBe('Hello from Jest.')
+  expect(state).toMatchSnapshot()
 })

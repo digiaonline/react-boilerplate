@@ -1,7 +1,21 @@
-import {helloSelector} from './selectors'
+import {getMessage, helloSelector} from './selectors'
 
-test('Hello selectors should get message from state', () => {
-  const state = {hello: ''}
+test('Message selector returns message', () => {
+  const state = {
+    hello: {
+      message: 'Hello from Jest.',
+    },
+  }
+  const message = getMessage(state)
+  expect(message).toEqual('Hello from Jest.')
+})
+
+test('Hello selector props matches snapshot', () => {
+  const state = {
+    hello: {
+      message: 'Hello from Jest.',
+    },
+  }
   const props = helloSelector(state)
-  expect(props).toHaveProperty('message', state.hello.message)
+  expect(props).toMatchSnapshot()
 })
