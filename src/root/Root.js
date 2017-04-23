@@ -2,17 +2,24 @@
 
 import React from 'react'
 import {Provider} from 'react-redux'
-import {Router} from 'react-router'
-import routes from './routes'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Hello from '../hello/Hello'
+import css from './Root.css'
 
 export type RootProps = {
-  history: any,
-  store: any,
+  store: Object,
 }
 
-const Root = ({history, store}: RootProps) =>
-  <Provider store={store}>
-    <Router history={history} routes={routes} key={Math.random()}/>
-  </Provider>
+const Root = ({store}: RootProps) => (
+  <div className={css.component}>
+    <Provider store={store}>
+      <Router>
+        <div className={css.routes}>
+          <Route exact path="/" component={Hello}/>
+        </div>
+      </Router>
+    </Provider>
+  </div>
+)
 
 export default Root
