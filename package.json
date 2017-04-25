@@ -74,6 +74,7 @@
     "lint": "eslint src --fix",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
+    "styleguide": "styleguidist server",
     "stylelint": "stylelint 'src/**/*.css'",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
@@ -111,5 +112,8 @@
     "plugins": [
       "react-hot-loader/babel"
     ]
+  },
+  "styleguide": {
+    "components": "src/**/[A-Z]*.js"
   }
 }

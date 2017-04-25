@@ -3,7 +3,7 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import Hello from '../hello/Hello'
+import Hello from '../../hello/components/Hello'
 import css from './Root.css'
 
 export type RootProps = {

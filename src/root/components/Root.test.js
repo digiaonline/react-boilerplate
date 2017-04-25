@@ -2,7 +2,7 @@ import React from 'react'
 import {render} from 'react-dom'
 import renderer from 'react-test-renderer'
 import Root from './Root'
-import configureStore from './configureStore'
+import configureStore from '../configureStore'
 
 test('Root component renders without crashing', () => {
   const store = configureStore()

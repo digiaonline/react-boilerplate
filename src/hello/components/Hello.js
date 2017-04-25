@@ -3,8 +3,8 @@
 import flow from 'lodash/flow'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {sayHello} from './actions'
-import {helloSelector} from './selectors'
+import {sayHello} from '../actions'
+import {helloSelector} from '../selectors'
 import css from './Hello.css'
 
 type HelloProps = {
