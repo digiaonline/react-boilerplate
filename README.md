@@ -74,7 +74,7 @@ yarn start
 You can compile the distribution build with the `build` script.
 
 ```bash
-yarn run build
+yarn build
 ```
 ## Test
 
