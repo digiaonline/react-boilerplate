@@ -1,0 +1,16 @@
+@import '../../styles/colors.css';
+@import '../../styles/typography.css';
+
+.component {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--silver);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: rem(36px);
+}

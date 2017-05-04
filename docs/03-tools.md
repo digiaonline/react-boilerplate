@@ -77,9 +77,8 @@ Use [npm scripts](https://docs.npmjs.com/misc/scripts) instead of task runners l
 
 You should define at least the following scripts:
 
-- `start` starts the application
+- `start` runs the application in development mode
 - `test` runs the test suite
-- `dev` runs the application in development mode
-- `compile` builds the application for production
+- `build` compiles the application for production
 
 **Note:** Remember to test your production build every now and then to make sure that it works.

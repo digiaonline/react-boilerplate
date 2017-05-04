@@ -1,0 +1,13 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "at-rule-no-vendor-prefix": true,
+    "declaration-empty-line-before": null,
+    "font-family-name-quotes": "always-where-recommended",
+    "function-url-quotes": "never",
+    "string-quotes": "single",
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global", "root"]
+    }]
+  }
+}

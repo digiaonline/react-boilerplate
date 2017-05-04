@@ -17,6 +17,7 @@ ratings:
   - "**.css"
   - "**.js"
 exclude_paths:
-  - defs
-  - flow-typed
-  - webpack
+  - build
+  - config
+  - decls
+  - scripts

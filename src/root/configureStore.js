@@ -1,8 +1,8 @@
 // @flow
 
 import {applyMiddleware, compose, createStore} from 'redux'
-import createRootReducer from './createRootReducer'
 import createSagaMiddleware from 'redux-saga'
+import createRootReducer from './createRootReducer'
 import createRootSaga from './createRootSaga'
 
 export default () => {

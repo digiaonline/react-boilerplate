@@ -108,7 +108,7 @@ Use selectors to select data from the state. Selectors are functions that take t
 
 ```javascript
 const todosSelector = (state) => ({
-  data: state.todos
+  data: state.todos,
 })
 
 connect(todosSelector)(Todos)
@@ -130,7 +130,7 @@ Use [Redux Saga](https://redux-saga.github.io/redux-saga/) and its [side-effects
 
 ### Example
 
-You can use [this very project](https://github.com/nordsoftware/react-boilerplate/) as a real-world example of how to combine all of this for your projects. 
+You can use [this very project](https://github.com/nordsoftware/react-boilerplate/) as a real-world example of how to combine all of this for your projects.
 
 ### Resources
 
@@ -141,11 +141,7 @@ You can use [this very project](https://github.com/nordsoftware/react-boilerplat
 
 ## Routing
 
-Use [React Router](https://github.com/ReactTraining/react-router) to define the routes for your application.
-
-**Protip:** You can use [React Router Redux](https://github.com/reactjs/react-router-redux) to connect React Router to Redux. It provides a reducer for the routing state and action creators for updating that state.
-
-**Note:** At the time of writing this [React Router v4](https://github.com/ReactTraining/react-router/tree/v4) is in beta. The major difference from v3 is that it embraces *declarative composability*. New projects should use v4 once it is stable. However if you are using v3 and it is getting the job done, do not worry about switching.
+Use [React Router](https://github.com/ReactTraining/react-router) to create routes for your application.
 
 ## Utilities
 
@@ -157,7 +153,6 @@ Here are some useful utility functions:
 - [find](https://lodash.com/docs/#find)
 - [flatten](https://lodash.com/docs/#flatten)
 - [flow](https://lodash.com/docs/#flow)
-- [flowRight](https://lodash.com/docs/#flowRight)
 - [keyBy](https://lodash.com/docs/#keyBy)
 - [get](https://lodash.com/docs/#get)
 - [mapValues](https://lodash.com/docs/#mapValues)
@@ -172,6 +167,8 @@ Here are some useful utility functions:
 
 Try keep your direction structure as flat as possible and group your code by feature, and not by type. Nothing is more frustrating than navigating the file tree every time you need to find the selector for the component you are working on or the reducer that you are writing a test for. It is much easier to place all files that are associated with each other under the same directory.
 
+React components are an exception to this, because it is better to keep them separate for clarity.
+
 **Note:** Your source code should always be placed in a `src` directory.
 
 **Do**
@@ -179,12 +176,13 @@ Try keep your direction structure as flat as possible and group your code by fea
 ```
 src/
   todo/
+    components/
+      Todos.js
+      Todo.css
     actions.js
     reducer.js
     selectors.js
     spec.js
-    Todos.js
-    todo.css
   index.js
   test.js
 ```
@@ -202,7 +200,7 @@ src/
   selectors/
     todo.js
   styles
-    todo.css
+    Todo.css
 spec/
   todo.js
 ```
@@ -213,7 +211,9 @@ You should write unit tests at least for the most important parts of your applic
 
 Focus on writing unit tests that ensure that your application is behaves correctly instead of testing every part of the application separately. Testing everything separately is time-consuming and it makes refactoring the application a nightmare, because you will spend a lot of time updating the test cases.
 
-We have found [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/) and [Enzyme](https://github.com/airbnb/enzyme) to be the best libraries for testing React applications.
+We have found [Jest](https://facebook.github.io/jest/) and [Enzyme](https://github.com/airbnb/enzyme) to be the best libraries for testing React applications.
+
+**Protip:** You can use [Jest Snapshot Testing](https://facebook.github.io/jest/docs/snapshot-testing.html) to test your React components without writing complex test cases.
 
 ## Quality Assurance
 

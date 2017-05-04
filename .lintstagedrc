@@ -1,5 +1,4 @@
 {
-  "*.js": [
-    "lint"
-  ]
+  "*.js": ["lint"],
+  "*.css": ["stylefmt", "stylelint"]
 }

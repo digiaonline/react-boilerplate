@@ -1,6 +1,6 @@
 # Coding Conventions
 
-Here you can read about our preferred ways of writing JavaScript.
+Here you can read about our preferred ways of writing modern JavaScript.
 
 ## Classes
 
@@ -85,7 +85,7 @@ Todo.anotherStaticMethod = () => {
 
 ## Arrow functions
 
-Use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) instead of traditional functions because they share the same lexical **this** (or scope) with the surrounding code, which is desirable in most cases. 
+Use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) instead of traditional functions because they share the same lexical **this** (or scope) with the surrounding code, which is desirable in most cases.
 
 ### Class methods
 

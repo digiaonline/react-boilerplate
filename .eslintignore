@@ -1,1 +1,5 @@
-**/*{.,-}min.js
+/build
+/config
+/scripts
+/flow-typed
+/decls

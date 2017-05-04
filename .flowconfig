@@ -1,16 +1,23 @@
-[include]
-.*/src/
-
 [ignore]
-.*/node_modules/fbjs
-.*/node_modules/editions/source
+./decls
+
+[include]
+./src
 
 [libs]
-./defs
-./flow-typed
+flow-typed/
+./node_modules/stylelint/decls
+decls/
 
 [options]
 module.name_mapper.extension='css' -> 'CSSModule'
 module.name_mapper.extension='svg' -> 'EmptyModule'
-module.name_mapper='^\$src/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
+
+; Consider $FlowFixMe as @todo for type issues
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+; In cases where a type error comes out of a bug in flow
+suppress_comment= \\(.\\|\n\\)*\\$FlowIssue
+; Type errors that we just ignore and won't try to fix in the future
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
+; For writing expected errors in type tests
+suppress_comment= \\(.\\|\n\\)*\\$FlowExpectError
