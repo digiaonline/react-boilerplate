@@ -1,4 +1,12 @@
 {
-  "*.js": ["lint"],
-  "*.css": ["stylefmt", "stylelint"]
+  "*.js": [
+    "prettier --no-bracket-spacing --no-semi --parser flow --single-quote --trailing-comma all --write",
+    "lint",
+    "git add"
+  ],
+  "*.css": [
+    "stylefmt",
+    "stylelint",
+    "git add"
+  ]
 }

@@ -9,7 +9,7 @@ import css from './Hello.css'
 
 type HelloProps = {
   message: string,
-  sayHello: typeof sayHello
+  sayHello: typeof sayHello,
 }
 
 export class Hello extends Component {
@@ -34,6 +34,4 @@ export class Hello extends Component {
   }
 }
 
-export default flow(
-  connect(helloSelector, {sayHello})
-)(Hello)
+export default flow(connect(helloSelector, {sayHello}))(Hello)
