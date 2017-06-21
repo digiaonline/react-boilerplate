@@ -1,12 +1,11 @@
 # React Boilerplate
 
-[![Build Status](https://travis-ci.org/nordsoftware/react-boilerplate.svg?branch=master)](https://travis-ci.org/nordsoftware/react-boilerplate)
-[![Test Coverage](https://lima.codeclimate.com/github/nordsoftware/react-boilerplate/badges/coverage.svg)](https://lima.codeclimate.com/github/nordsoftware/react-boilerplate/coverage)
-[![Code Climate](https://codeclimate.com/github/nordsoftware/react-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/nordsoftware/react-boilerplate)
+[![Build Status](https://travis-ci.org/digiaonline/react-boilerplate.svg?branch=master)](https://travis-ci.org/nordsoftware/react-boilerplate)
+[![Test Coverage](https://lima.codeclimate.com/github/digiaonline/react-boilerplate/badges/coverage.svg)](https://lima.codeclimate.com/github/digiaonline/react-boilerplate/coverage)
+[![Code Climate](https://codeclimate.com/github/digiaonline/react-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/digiaonline/react-boilerplate)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Gitter](https://img.shields.io/gitter/room/norsoftware/open-source.svg?maxAge=2592000)](https://gitter.im/nordsoftware/open-source)
 
-A [Nord Software](https://github.com/nordsoftware/) project.
+A [Digia](https://github.com/digiaonline/) project.
 
 ## Why do I want this?
 
@@ -23,9 +22,10 @@ As you probably know, there are numerous boilerplates available for [React](http
 - [React](https://facebook.github.io/react/) User interface components
 - [Redux](http://redux.js.org/) Predictable state container
 - [Lodash](https://lodash.com/) Utility library
-- [PostCSS](http://postcss.org/) CSS transformer
 - [Babel](https://babeljs.io/) JavaScript transpiler
 - [ESLint](http://eslint.org/) JavaScript Linter
+- [Prettier](https://github.com/prettier/prettier) Code formatter
+- [PostCSS](http://postcss.org/) CSS transformer
 - [Stylelint](https://stylelint.io/) CSS Linter
 - [Webpack](https://webpack.js.org/) Module bundler
 - [Jest](https://facebook.github.io/jest/) Testing solution
