@@ -1,7 +1,6 @@
 {
   "*.js": [
-    "prettier --no-bracket-spacing --no-semi --parser flow --single-quote --trailing-comma all --write",
-    "lint",
+    "prettier-eslint --write \"src/**/*.js\"",
     "git add"
   ],
   "*.css": [
