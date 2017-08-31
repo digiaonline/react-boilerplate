@@ -1,5 +1,6 @@
 [ignore]
 ./decls
+.*/node_modules/stylelint/lib
 
 [include]
 ./src
