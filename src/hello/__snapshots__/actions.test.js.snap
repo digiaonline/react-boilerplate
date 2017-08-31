@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reply action matches snapshot 1`] = `
+Object {
+  "payload": "What's up?",
+  "type": "REPLY",
+}
+`;
+
+exports[`Say hello action matches snapshot 1`] = `
+Object {
+  "payload": "Hello Jest!",
+  "type": "SAY_HELLO",
+}
+`;

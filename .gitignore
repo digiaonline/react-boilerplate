@@ -1,10 +1,12 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# ide
+/.idea
+
 # dependencies
 /node_modules
 
 # testing
-**/__snapshots__
 /coverage
 
 # production
