@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hello component should set message from props 1`] = `
+<div
+  className={undefined}
+>
+  <h1
+    className={undefined}
+  >
+    Hello from Jest.
+  </h1>
+</div>
+`;
