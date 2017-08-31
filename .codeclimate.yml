@@ -20,4 +20,5 @@ exclude_paths:
   - build
   - config
   - decls
+  - flow-typed
   - scripts
