@@ -39,7 +39,53 @@ Use [context](https://facebook.github.io/react/docs/context.html) together with 
 
 ## State
 
-Use [MobX](https://mobx.js.org/) to manage the application state.
+Use [MobX](https://mobx.js.org/) to manage the application state in separate stores.
+
+You should also let MobX manage component state.
+
+**Do**
+
+```javascript
+import React, {Component} from 'react'
+import {observable} from 'mobx'
+import {observer} from 'mobx-react'
+
+class Hello extends Component {
+  @observable message: string = ''
+
+  render() {
+    return (
+      <div>
+        <p>{this.message}</p>
+        <button onClick={() => this.message = 'Hello.'}>Say Hello</button>
+      </div>
+    )
+  }
+}
+```
+
+**Do NOT do**
+
+```javascript
+import React, {Component} from 'react'
+
+type State = {
+  message: string,
+}
+
+class Hello extends Component {
+  state: State = {message: ''}
+
+  render() {
+    return (
+      <div>
+        <p>{this.state.message}</p>
+        <button onClick={() => this.setState({message: 'Hello.'}}>Say Hello</button>
+      </div>
+    )
+  }
+}
+```
 
 ### Example
 
