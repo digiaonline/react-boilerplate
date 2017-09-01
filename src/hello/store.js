@@ -7,7 +7,7 @@ class HelloStore {
 
   @action
   sayHello = () => {
-    this.message = 'Hello from MobX.'
+    this.message = 'Hello from MobX!'
   }
 }
 
