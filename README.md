@@ -20,7 +20,7 @@ As you probably know, there are numerous boilerplates available for [React](http
 
 - [Flowtype](https://flowtype.org/) Type checker
 - [React](https://facebook.github.io/react/) User interface components
-- [Redux](http://redux.js.org/) Predictable state container
+- [MobX](https://mobx.js.org/) Simple, scalable state management
 - [Lodash](https://lodash.com/) Utility library
 - [Babel](https://babeljs.io/) JavaScript transpiler
 - [ESLint](http://eslint.org/) JavaScript Linter

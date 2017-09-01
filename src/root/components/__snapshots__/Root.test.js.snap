@@ -13,7 +13,7 @@ exports[`Root component matches snapshot 1`] = `
       <h1
         className={undefined}
       >
-        Hello from Redux.
+        Hello from MobX.
       </h1>
     </div>
   </div>
