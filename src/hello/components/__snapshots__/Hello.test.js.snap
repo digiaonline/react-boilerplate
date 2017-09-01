@@ -7,7 +7,7 @@ exports[`Hello component should read message from MobX store 1`] = `
   <h1
     className={undefined}
   >
-    Hello from MobX.
+    Hello from MobX!
   </h1>
 </div>
 `;
