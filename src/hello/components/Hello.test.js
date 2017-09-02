@@ -1,11 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import {Hello} from './Hello'
-import {sayHello} from '../actions'
 
-test('Hello component should set message from props', () => {
-  const tree = renderer.create(
-    <Hello sayHello={sayHello} message="Hello from Jest."/>
-  ).toJSON()
+test('Hello component should read message from MobX store', () => {
+  const tree = renderer.create(<Hello />).toJSON()
   expect(tree).toMatchSnapshot()
 })

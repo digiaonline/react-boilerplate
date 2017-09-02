@@ -10,7 +10,7 @@ Here you can read about how we build our React applications.
 
 Use stateless functional components when possible. Class components are only necessary when you need a local state, e.g. input fields.
 
-Logic should **not** be performed in the `render` method or in functional components, because it may have severe performance implications. The reason for this is that components may be rendered tens of times every second, which in turn means that the logic will be evaluated as many times. The easiest way to avoid this is to use [Redux](http://redux.js.org/) and move logic into [selectors](#Selectors).
+Logic should **not** be performed in the `render` method or in functional components, because it may have severe performance implications. The reason for this is that components may be rendered tens of times every second, which in turn means that the logic will be evaluated as many times.
 
 **Do**
 
@@ -39,94 +39,53 @@ Use [context](https://facebook.github.io/react/docs/context.html) together with 
 
 ## State
 
-Use [Redux](http://redux.js.org/) to manage the application state (also known as root state).
+Use [MobX](https://mobx.js.org/) to manage the application state in separate stores.
 
-### Reducers
-
-You should try to keep your application state [as flat as possible](http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html).
+You should also let MobX manage component state.
 
 **Do**
 
 ```javascript
-const listReducer = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [...state, action.payload]
-  }
-}
+import React, {Component} from 'react'
+import {observable} from 'mobx'
+import {observer} from 'mobx-react'
 
-combineReducers({
-  list: listReducer,
-})
-```
+class Hello extends Component {
+  @observable message: string = ''
 
-**Do NOT do**
-
-```javascript
-const todoReducer = (state = {todos: []}, action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return {
-        ...state,
-        list: [...state.list, action.payload],
-      }
+  render() {
+    return (
+      <div>
+        <p>{this.message}</p>
+        <button onClick={() => this.message = 'Hello.'}>Say Hello</button>
+      </div>
+    )
   }
 }
 ```
 
-**Protip:** You can use the [handleActions](https://github.com/acdlite/redux-actions#handleactionsreducermap-defaultstate) method from [Redux Actions](https://github.com/acdlite/redux-actions) to create your reducers.
-
-### Action Creators
-
-Use [FSAs]((https://github.com/acdlite/flux-standard-action)) (short for Flux Standard Actions) to define more human-friendly, useful and simple actions. Another benefit from using FSAs is that you can deal with errors more easily because they are treated as a first class concept.
-
-**Do**
-
-```javascript
-const addTodo = (text) => ({
-  type: 'ADD_TODO',
-  payload: text,
-})
-```
-
 **Do NOT do**
 
 ```javascript
-const addTodo = (text) => ({
-  type: 'ADD_TODO',
-  text,
-})
+import React, {Component} from 'react'
+
+type State = {
+  message: string,
+}
+
+class Hello extends Component {
+  state: State = {message: ''}
+
+  render() {
+    return (
+      <div>
+        <p>{this.state.message}</p>
+        <button onClick={() => this.setState({message: 'Hello.'}}>Say Hello</button>
+      </div>
+    )
+  }
+}
 ```
-
-**Protip:** You can use the [createAction](https://github.com/acdlite/redux-actions#createactiontype-payloadcreator--identity-metacreator) method from [Redux Actions](https://github.com/acdlite/redux-actions) to create your actions creators.
-
-### Selectors
-
-Use selectors to select data from the state. Selectors are functions that take the application state and an optional set of properties and returns some data from the state. This way you can separate your components from the state, which means that you can refactor one without breaking the other. Selectors are also the easiest way to avoid adding logic to your rendering logic.
-
-**Do**
-
-```javascript
-const todosSelector = (state) => ({
-  data: state.todos,
-})
-
-connect(todosSelector)(Todos)
-```
-
-**Do NOT do**
-
-```javascript
-connect((state) => ({
-  data: state.todos,
-}))(Todos)
-```
-
-**Protip:** You can use [Reselect](https://github.com/reactjs/reselect) to create memorized selectors if your need to increase the performance of your selectors.
-
-### Side-effects
-
-Use [Redux Saga](https://redux-saga.github.io/redux-saga/) and its [side-effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) to separate your components from your application state in complex applications. This will allow you to simplify more complex applications, because your components can dispatch actions that will be handled by the side-effects.
 
 ### Example
 
@@ -134,10 +93,7 @@ You can use [this very project](https://github.com/nordsoftware/react-boilerplat
 
 ### Resources
 
-* [Getting Started with Redux](https://egghead.io/courses/getting-started-with-redux)
-* [Building React Applications with Idiomatic Redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
-* [Redux side-effects and You](https://medium.com/javascript-and-opinions/redux-side-effects-and-you-66f2e0842fc3#.2z19w8rhk)
-* [Troubleshooting](http://redux.js.org/docs/Troubleshooting.html)
+* [The Gist of MobX](https://mobx.js.org/intro/overview.html)
 
 ## Routing
 
