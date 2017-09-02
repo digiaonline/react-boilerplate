@@ -60,7 +60,7 @@
   "scripts": {
     "ci": "CI=true run-p flow lint-staged test",
     "flow": "flow",
-    "flow:fetch-types": "flow-typed install --flowVersion=0.44",
+    "flow:fetch-types": "flow-typed install --flowVersion=0.52",
     "lint": "eslint src",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
