@@ -1,5 +1,6 @@
 [ignore]
 ./decls
+.*/node_modules/stylelint/lib
 
 [include]
 ./src
@@ -12,6 +13,8 @@ decls/
 [options]
 module.name_mapper.extension='css' -> 'CSSModule'
 module.name_mapper.extension='svg' -> 'EmptyModule'
+
+esproposal.decorators=ignore
 
 ; Consider $FlowFixMe as @todo for type issues
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

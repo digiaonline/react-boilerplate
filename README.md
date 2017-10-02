@@ -1,6 +1,6 @@
 # React Boilerplate
 
-[![Build Status](https://travis-ci.org/digiaonline/react-boilerplate.svg?branch=master)](https://travis-ci.org/nordsoftware/react-boilerplate)
+[![Build Status](https://travis-ci.org/digiaonline/react-boilerplate.svg?branch=master)](https://travis-ci.org/digiaonline/react-boilerplate)
 [![Test Coverage](https://lima.codeclimate.com/github/digiaonline/react-boilerplate/badges/coverage.svg)](https://lima.codeclimate.com/github/digiaonline/react-boilerplate/coverage)
 [![Code Climate](https://codeclimate.com/github/digiaonline/react-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/digiaonline/react-boilerplate)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -20,7 +20,7 @@ As you probably know, there are numerous boilerplates available for [React](http
 
 - [Flowtype](https://flowtype.org/) Type checker
 - [React](https://facebook.github.io/react/) User interface components
-- [Redux](http://redux.js.org/) Predictable state container
+- [MobX](https://mobx.js.org/) Simple, scalable state management
 - [Lodash](https://lodash.com/) Utility library
 - [Babel](https://babeljs.io/) JavaScript transpiler
 - [ESLint](http://eslint.org/) JavaScript Linter

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hello component should read message from MobX store 1`] = `
+<div
+  className={undefined}
+>
+  <h1
+    className={undefined}
+  >
+    Hello from MobX!
+  </h1>
+</div>
+`;
