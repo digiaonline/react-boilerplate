@@ -9,7 +9,7 @@
     "selector-pseudo-class-no-unknown": [true, {
       "ignorePseudoClasses": ["global", "root"]
     }],
-    'property-no-unknown': [ true, {
+    'property-no-unknown': [true, {
       ignoreProperties: ['composes'],
     }],
   }
