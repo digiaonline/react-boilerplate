@@ -23,6 +23,7 @@
     "file-loader": "0.11.2",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
+    "image-webpack-loader": "^3.3.0",
     "mobx": "^3.2.2",
     "mobx-react": "^4.2.2",
     "normalize.css": "^7.0.0",
