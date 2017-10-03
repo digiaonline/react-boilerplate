@@ -8,6 +8,9 @@
     "string-quotes": "single",
     "selector-pseudo-class-no-unknown": [true, {
       "ignorePseudoClasses": ["global", "root"]
-    }]
+    }],
+    'property-no-unknown': [true, {
+      ignoreProperties: ['composes'],
+    }],
   }
 }
