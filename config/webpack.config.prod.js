@@ -88,7 +88,17 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
-    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: [
+      '.web.ts',
+      '.ts',
+      '.web.tsx',
+      '.tsx',
+      '.web.js',
+      '.js',
+      '.json',
+      '.web.jsx',
+      '.jsx',
+    ],
     alias: {
       
       // Support React Native Web
@@ -114,18 +124,15 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
+        loader: require.resolve('tslint-loader'),
         enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
-              
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
+        include: paths.appSrc,
+      },
+      {
+        test: /\.js$/,
+        loader: require.resolve('source-map-loader'),
+        enforce: 'pre',
         include: paths.appSrc,
       },
       {
@@ -143,15 +150,11 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          // Process JS with Babel.
+          //Compile .tsx?
           {
-            test: /\.(js|jsx)$/,
+            test: /\.(ts|tsx)$/,
             include: paths.appSrc,
-            loader: require.resolve('babel-loader'),
-            options: {
-              
-              compact: true,
-            },
+            loader: require.resolve('ts-loader')
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
