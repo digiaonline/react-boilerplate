@@ -86,7 +86,17 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
-    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: [
+      '.web.ts',
+      '.ts',
+      '.web.tsx',
+      '.tsx',
+      '.web.js', 
+      '.js', 
+      '.json', 
+      '.web.jsx', 
+      '.jsx'
+    ],
     alias: {
       
       // Support React Native Web
@@ -112,19 +122,16 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
+        loader: require.resolve('tslint-loader'),
         enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
-              
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: paths.appSrc,
+        include: paths.appSrc
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: require.resolve('source-map-loader'),
+        include: paths.appSrc
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -142,18 +149,11 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          // Process JS with Babel.
+          // Compile .tsx?
           {
-            test: /\.(js|jsx)$/,
+            test: /\.(ts|tsx)$/,
             include: paths.appSrc,
-            loader: require.resolve('babel-loader'),
-            options: {
-              
-              // This is a feature of `babel-loader` for webpack (not Babel itself).
-              // It enables caching results in ./node_modules/.cache/babel-loader/
-              // directory for faster rebuilds.
-              cacheDirectory: true,
-            },
+            loader: require.resolve('ts-loader'),
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.

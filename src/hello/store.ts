@@ -1,9 +1,7 @@
-// @flow
-
 import {observable, action} from 'mobx'
 
 class HelloStore {
-  @observable message: string = 'Hello.'
+  @observable message = 'Hello.'
 
   @action
   sayHello = () => {
