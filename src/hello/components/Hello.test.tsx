@@ -1,8 +1,8 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
+import * as React from 'react'
+import {create} from 'react-test-renderer'
 import {Hello} from './Hello'
 
 test('Hello component should read message from MobX store', () => {
-  const tree = renderer.create(<Hello />).toJSON()
+  const tree = create(<Hello />).toJSON()
   expect(tree).toMatchSnapshot()
 })
