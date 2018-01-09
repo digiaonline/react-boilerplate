@@ -1,2 +1,2 @@
-export const component: string;
-export const routes: string;
+export const component: string
+export const routes: string

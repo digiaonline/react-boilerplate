@@ -1,6 +1,6 @@
 {
-  "*.js": [
-    "prettier-eslint --write \"src/**/*.js\"",
+  "*.ts?(x)": [
+    "prettier-tslint fix \"src/**/*.ts?(x)\"",
     "git add"
   ],
   "*.css": [

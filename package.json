@@ -54,7 +54,8 @@
     "jest": "20.0.4",
     "lint-staged": "^4.0.4",
     "npm-run-all": "^4.1.1",
-    "prettier-eslint-cli": "^4.3.0",
+    "prettier": "^1.9.2",
+    "prettier-tslint": "^0.3.0",
     "react-dev-utils": "^4.0.0",
     "react-hot-loader": "next",
     "react-test-renderer": "^15.6.1",
@@ -72,8 +73,8 @@
     "webpack-dev-server": "2.7.1"
   },
   "scripts": {
-    "ci": "CI=true run-p lint-staged test",
-    "lint": "eslint src",
+    "ci": "CI=true run-p test",
+    "lint": "tslint src/**/*.ts?\\(x\\) --project ./tsconfig.json",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
     "stylelint": "stylelint 'src/**/*.css'",
@@ -120,7 +121,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "/Users/chris/Code/digiaonline/react-boilerplate-ts/tsconfig.test.json"
+        "tsConfigFile": "./tsconfig.test.json"
       }
     }
   },
