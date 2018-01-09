@@ -68,6 +68,7 @@
     "tslint-loader": "^3.5.3",
     "tslint-react": "^3.2.0",
     "typescript": "~2.5.3",
+    "typings-for-css-modules-loader": "^1.7.0",
     "webpack-dev-server": "2.7.1"
   },
   "scripts": {

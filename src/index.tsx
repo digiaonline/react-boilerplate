@@ -2,8 +2,7 @@ import * as React from 'react'
 import {render} from 'react-dom'
 import {AppContainer} from 'react-hot-loader'
 import Root from './root/components/Root'
-
-require('./index.css')
+import './index.css'
 
 const renderApp = (component: any) =>
   render(
