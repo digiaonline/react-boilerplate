@@ -63,11 +63,9 @@
         ],
         "quotemark": [true, "single", "jsx-double"],
         "radix": true,
-        "semicolon": false,
+        "semicolon": [true, "never"],
         "switch-default": true,
-
         "trailing-comma": [false],
-
         "triple-equals": [ true, "allow-null-check" ],
         "typedef": [
             true,
@@ -89,7 +87,7 @@
             true,
             "check-branch",
             "check-decl",
-            // "check-module",
+            "check-module",
             "check-operator",
             "check-separator",
             "check-type",
