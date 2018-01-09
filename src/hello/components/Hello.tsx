@@ -1,8 +1,7 @@
 import * as React from 'react'
 import {observer} from 'mobx-react'
 import helloStore from '../store'
-
-const css = require('./Hello.css')
+import * as css from './Hello.css'
 
 @observer
 export class Hello extends React.Component {

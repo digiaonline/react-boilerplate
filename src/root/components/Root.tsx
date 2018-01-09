@@ -1,8 +1,7 @@
 import * as React from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Hello from '../../hello/components/Hello'
-
-const css = require('./Root.css')
+import * as css from './Root.css'
 
 const Root = () => (
   <div className={css.component}>
