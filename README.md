@@ -42,7 +42,7 @@ Install [create-project](https://www.npmjs.com/package/create-project) and creat
 
 ```bash
 yarn global add create-project
-create-project my-project nordsoftware/react-boilerplate && cd my-project
+create-project my-project digiaonline/react-boilerplate && cd my-project
 ```
 
 ### Install dependencies
