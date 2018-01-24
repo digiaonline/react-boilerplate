@@ -11,6 +11,8 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -91,19 +93,20 @@ module.exports = {
       '.ts',
       '.web.tsx',
       '.tsx',
-      '.web.js', 
-      '.js', 
-      '.json', 
-      '.web.jsx', 
+      '.web.js',
+      '.js',
+      '.json',
+      '.web.jsx',
       '.jsx'
     ],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
     },
     plugins: [
+      new TsconfigPathsPlugin({configFile: require.resolve('../tsconfig.json')}),
       // Prevents users from importing files from outside of src/ (or node_modules/).
       // This often causes confusion because we only process files within src/ with babel.
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
@@ -151,9 +154,24 @@ module.exports = {
           },
           // Compile .tsx?
           {
-            test: /\.(ts|tsx)$/,
+            test: /\.(tsx?)$/,
             include: paths.appSrc,
-            loader: require.resolve('ts-loader'),
+            use: [
+              {
+                // using babel just because of react-hot-loader
+                loader: require.resolve('babel-loader'),
+                options: {
+                  plugins: ['react-hot-loader/babel'],
+                },
+              },
+              {
+                loader: require.resolve('ts-loader'),
+                options: {
+                  // faster rebuilds:
+                  transpileOnly: true,
+                },
+              },
+            ],
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
