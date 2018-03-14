@@ -188,6 +188,7 @@ module.exports = {
                       loader: require.resolve("typings-for-css-modules-loader"),
                       options: {
                         modules: true,
+                        namedExport: true,
                         importLoaders: 1,
                         localIdentName: "[name]__[local]___[hash:base64:5]",
                         minimize: true,
