@@ -3,8 +3,11 @@ import { observer } from 'mobx-react'
 import helloStore from '../store'
 import * as css from './Hello.css'
 
+interface Props {}
+interface State {}
+
 @observer
-export class Hello extends React.Component {
+export class Hello extends React.Component<Props, State> {
   componentWillMount() {
     helloStore.sayHello()
   }
