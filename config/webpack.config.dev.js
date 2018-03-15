@@ -5,13 +5,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -51,7 +51,7 @@ module.exports = {
     // Enable hot-loading
     require.resolve('react-hot-loader/patch'),
     // Finally, this is your app's code:
-    paths.appIndexJs,
+    paths.appIndexTs,
     // We include the app code last so that if there is a runtime error during
     // initialization, it doesn't blow up the WebpackDevServer client, and
     // changing JS code would still trigger a refresh.
@@ -124,12 +124,16 @@ module.exports = {
 
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
-      {
-        test: /\.(ts|tsx)$/,
-        loader: require.resolve('tslint-loader'),
-        enforce: 'pre',
-        include: paths.appSrc
-      },
+      // {
+      //   test: /\.(ts|tsx)$/,
+      //   loader: require.resolve('tslint-loader'),
+      //   enforce: 'pre',
+      //   include: paths.appSrc,
+      //   options: {
+      //     failOnHint: true,
+      //     emitErrors: true
+      //   }
+      // },
       {
         test: /\.js$/,
         enforce: 'pre',
@@ -157,13 +161,6 @@ module.exports = {
             test: /\.(tsx?)$/,
             include: paths.appSrc,
             use: [
-              {
-                // using babel just because of react-hot-loader
-                loader: require.resolve('babel-loader'),
-                options: {
-                  plugins: ['react-hot-loader/babel'],
-                },
-              },
               {
                 loader: require.resolve('ts-loader'),
                 options: {
@@ -268,6 +265,12 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // Delegate TypeScript type-checker on a separate process
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: paths.appTsConfig,
+      tslint: paths.appTsLintConfig,
+      watch: [paths.appSrc]
+    }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
