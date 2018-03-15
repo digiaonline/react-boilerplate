@@ -58,7 +58,7 @@
     "webpack-dev-server": "2.7.1"
   },
   "scripts": {
-    "ci": "CI=true run-p flow lint-staged test",
+    "ci": "CI=true run-p flow lint-staged test:cov",
     "flow": "flow",
     "flow:fetch-types": "flow-typed install --flowVersion=0.52",
     "lint": "eslint src",
@@ -67,7 +67,8 @@
     "stylelint": "stylelint 'src/**/*.css'",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "test:cov": "yarn test --coverage"
   },
   "jest": {
     "collectCoverageFrom": [
