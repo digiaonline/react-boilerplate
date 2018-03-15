@@ -9,7 +9,7 @@ A [Digia](https://github.com/digiaonline/) project.
 
 ## Why do I want this?
 
-As you probably know, there are numerous boilerplates available for [React](https://facebook.github.io/react/), so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you rarely need. Our boilerplate was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) and provides you with a great starting point for any React project with as few lines of code as possible, especially if you want to use [Flowtype](https://flowtype.org/).
+As you probably know, there are numerous boilerplates available for [React](https://facebook.github.io/react/), so you might be wondering why you would want to use ours. Most of the boilerplate projects come with a lot of code that you rarely need. Our boilerplate was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) and provides you with a great starting point for any React project with as few lines of code as possible, especially if you want to use [TypeScript].
 
 ## What do I need to get started?
 
@@ -18,12 +18,11 @@ As you probably know, there are numerous boilerplates available for [React](http
 
 ## What's in the box?
 
-- [Flowtype](https://flowtype.org/) Type checker
+- [TypeScript] Type checker
 - [React](https://facebook.github.io/react/) User interface components
 - [MobX](https://mobx.js.org/) Simple, scalable state management
 - [Lodash](https://lodash.com/) Utility library
-- [Babel](https://babeljs.io/) JavaScript transpiler
-- [ESLint](http://eslint.org/) JavaScript Linter
+- [TSLint](https://palantir.github.io/tslint/) TypeScript Linter
 - [Prettier](https://github.com/prettier/prettier) Code formatter
 - [PostCSS](http://postcss.org/) CSS transformer
 - [Stylelint](https://stylelint.io/) CSS Linter
@@ -89,3 +88,5 @@ yarn test
 ## License
 
 [MIT](LICENSE)
+
+[TypeScript]: https://www.typescriptlang.org/
