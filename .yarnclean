@@ -40,3 +40,6 @@ Gruntfile.js
 # misc
 *.gz
 *.md
+
+# Don't clean files needed for code coverage report
+!istanbul-reports/lib/html/assets

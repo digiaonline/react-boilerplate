@@ -60,14 +60,15 @@
     "webpack-dev-server": "2.7.1"
   },
   "scripts": {
-    "ci": "CI=true run-p test",
+    "ci": "CI=true run-p flow lint-staged test:cov",
     "lint": "tslint src/**/*.ts?\\(x\\) --project ./tsconfig.json",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
     "stylelint": "stylelint 'src/**/*.css'",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "test:cov": "yarn test --coverage"
   },
   "jest": {
     "mapCoverage": true,
