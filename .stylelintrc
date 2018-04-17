@@ -1,16 +1,33 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
+    "comment-empty-line-before": false,
+    "comment-whitespace-inside": false,
+    "no-descending-specificity": false,
+    "declaration-colon-newline-after": false,
+    "selector-pseudo-element-colon-notation": "single",
     "at-rule-no-vendor-prefix": true,
     "declaration-empty-line-before": null,
     "font-family-name-quotes": "always-where-recommended",
     "function-url-quotes": "never",
     "string-quotes": "single",
-    "selector-pseudo-class-no-unknown": [true, {
-      "ignorePseudoClasses": ["global", "root"]
-    }],
-    "property-no-unknown": [true, {
-      "ignoreProperties": ["composes"]
-    }]
+    "number-leading-zero": "never",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "global",
+          "root"
+        ]
+      }
+    ],
+    'property-no-unknown': [
+      true,
+      {
+        ignoreProperties: [
+          'composes'
+        ]
+      }
+    ]
   }
 }

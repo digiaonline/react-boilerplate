@@ -1,6 +1,9 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs"
+    "module": "commonjs",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "noUnusedLocals": false,
+    "noImplicitAny": false
   }
 }

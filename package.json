@@ -1,29 +1,16 @@
 {
   "private": true,
   "dependencies": {
-    "autoprefixer": "7.1.2",
-    "case-sensitive-paths-webpack-plugin": "2.1.1",
-    "css-loader": "0.28.4",
-    "dotenv": "4.0.0",
-    "extract-text-webpack-plugin": "3.0.0",
-    "file-loader": "0.11.2",
-    "fs-extra": "3.0.1",
-    "html-webpack-plugin": "2.29.0",
     "mobx": "^3.2.2",
     "mobx-react": "^4.2.2",
     "normalize.css": "^7.0.0",
     "object-assign": "4.1.1",
-    "postcss-flexbugs-fixes": "3.2.0",
-    "postcss-loader": "2.0.6",
     "promise": "8.0.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-router-dom": "^4.2.2",
-    "style-loader": "0.18.2",
-    "sw-precache-webpack-plugin": "0.11.4",
-    "url-loader": "0.5.9",
-    "webpack": "3.5.1",
-    "webpack-manifest-plugin": "1.2.1",
+    "react-hot-loader": "^4.0.1",
+    "react-test-renderer": "^16.3.2",
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
@@ -34,84 +21,83 @@
     "@types/react-router-dom": "^4.2.3",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "^1.13.3",
+    "autoprefixer": "7.1.2",
+    "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
+    "css-loader": "0.28.4",
+    "dotenv": "4.0.0",
+    "extract-text-webpack-plugin": "3.0.0",
+    "file-loader": "0.11.2",
     "fork-ts-checker-webpack-plugin": "^0.4.1",
+    "fs-extra": "3.0.1",
+    "html-webpack-plugin": "2.29.0",
     "husky": "^0.14.3",
     "jest": "20.0.4",
     "lint-staged": "^4.0.4",
     "npm-run-all": "^4.1.1",
-    "prettier": "^1.9.2",
-    "prettier-tslint": "^0.3.0",
+    "postcss-flexbugs-fixes": "3.2.0",
+    "postcss-loader": "2.0.6",
+    "prettier": "^1.11.1",
     "react-dev-utils": "^4.0.0",
-    "react-hot-loader": "^4.0.0-beta.12",
-    "react-test-renderer": "^15.6.1",
     "source-map-loader": "^0.2.3",
+    "style-loader": "0.18.2",
     "stylefmt": "^6.0.0",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "ts-jest": "^20.0.7",
+    "sw-precache-webpack-plugin": "0.11.4",
     "ts-loader": "^2.3.7",
     "tsconfig-paths-webpack-plugin": "^2.0.0",
     "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.10.0",
     "tslint-loader": "^3.5.3",
+    "tslint-plugin-prettier": "^1.3.0",
     "tslint-react": "^3.2.0",
     "typescript": "~2.5.3",
     "typings-for-css-modules-loader": "^1.7.0",
-    "webpack-dev-server": "2.7.1"
+    "url-loader": "0.5.9",
+    "webpack": "^3.5.1",
+    "webpack-dev-server": "2.7.1",
+    "webpack-manifest-plugin": "1.2.1"
   },
   "scripts": {
-    "ci": "CI=true run-p flow lint-staged test:cov",
+    "ci": "CI=true run-p test",
     "lint": "tslint src/**/*.ts?\\(x\\) --project ./tsconfig.json",
-    "lint-staged": "lint-staged",
     "precommit": "lint-staged",
-    "stylelint": "stylelint 'src/**/*.css'",
+    "codestyle": "tslint src/**/*.ts?\\(x\\) --project ./tsconfig.json --fix",
+    "stylelint": "stylelint src/**/*.css",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "jest",
     "test:cov": "yarn test --coverage"
   },
   "jest": {
-    "mapCoverage": true,
+    "testEnvironment": "jsdom",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/scripts/test.js"
     ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/src/**/?(*.)(spec|test).ts?(x)"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
     "transform": {
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^.+\\.tsx?$": "<rootDir>/config/jest/typescriptTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      "^(?!.*\\.(js|jsx|css)$)": "<rootDir>/config/jest/fileTransform.js"
     },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "modulePathIgnorePatterns": [
+      "build"
+    ],
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    },
-    "moduleFileExtensions": [
-      "web.ts",
-      "ts",
-      "web.tsx",
-      "tsx",
-      "web.js",
-      "js",
-      "web.jsx",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "./tsconfig.test.json"
-      }
-    }
+    ]
   },
   "styleguide": {
     "components": "src/**/[A-Z]*.js"
