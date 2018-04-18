@@ -5,6 +5,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const HtmlWebpackIncludeSiblingChunksPlugin = require('html-webpack-include-sibling-chunks-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const InterpolateHtmlPlugin = require('./react-dev-utils/InterpolateHtmlPlugin')
 const WatchMissingNodeModulesPlugin = require('./react-dev-utils/WatchMissingNodeModulesPlugin')
@@ -23,6 +24,18 @@ const publicPath = '/'
 const publicUrl = ''
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl)
+
+const postCSSOptions = {
+  // Necessary for external CSS imports to work
+  // https://github.com/facebook/create-react-app/issues/2677
+  ident: 'postcss',
+  plugins: () => [
+    require('postcss-flexbugs-fixes'),
+    autoprefixer({
+      flexbox: 'no-2009',
+    }),
+  ],
+}
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -71,8 +84,20 @@ module.exports = {
     // This is the URL that app is served from. We use "/" in development.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: (info) =>
-      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+    devtoolModuleFilenameTemplate: info =>
+      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+  },
+  optimization: {
+    // Automatically split vendor and commons
+    // https://twitter.com/wSokra/status/969633336732905474
+    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+    splitChunks: {
+      chunks: 'all',
+      name: false,
+    },
+    // Keep the runtime chunk seperated to enable long term caching
+    // https://twitter.com/wSokra/status/969679223278505985
+    runtimeChunk: true,
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -106,21 +131,20 @@ module.exports = {
       'react-native': 'react-native-web'
     },
     plugins: [
+      new TsconfigPathsPlugin({ configFile: require.resolve('../tsconfig.json') }),
       // Prevents users from importing files from outside of src/ (or node_modules/).
       // This often causes confusion because we only process files within src/ with babel.
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-      new TsconfigPathsPlugin({ configFile: require.resolve('../tsconfig.json') }),
+      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson])
     ]
   },
   module: {
     strictExportPresence: true,
     rules: [
-      // TODO: Disable require.ensure as it's not a standard language feature.
-      // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
-      // { parser: { requireEnsure: false } },
+      // Disable require.ensure as it's not a standard language feature.
+      { parser: { requireEnsure: false } },
       {
         test: /\.(js|jsx|mjs)$/,
         loader: require.resolve('source-map-loader'),
@@ -145,12 +169,21 @@ module.exports = {
           },
           // Compile .tsx?
           {
-            test: /\.(ts|tsx)$/,
+            test: /\.tsx?$/,
             include: paths.appSrc,
             use: [
+              { loader: 'cache-loader' },
+              {
+                loader: 'thread-loader',
+                options: {
+                  // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+                  workers: require('os').cpus().length - 1,
+                },
+              },
               {
                 loader: require.resolve('ts-loader'),
                 options: {
+                  happyPackMode: true,
                   // disable type checker - we will use it in fork plugin
                   transpileOnly: true,
                 },
@@ -177,23 +210,7 @@ module.exports = {
               },
               {
                 loader: require.resolve('postcss-loader'),
-                options: {
-                  // Necessary for external CSS imports to work
-                  // https://github.com/facebookincubator/create-react-app/issues/2677
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9' // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009'
-                    })
-                  ]
-                }
+                options: postCSSOptions
               }
             ]
           },
@@ -220,6 +237,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackIncludeSiblingChunksPlugin(),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
@@ -252,15 +270,19 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // Ignore changes to css.d.ts files in the watcher
     new webpack.WatchIgnorePlugin([
-      /css\.d\.ts$/
+      /\.js$/,
+      /\.d\.ts$/
     ]),
+    // ...but still invalidate their "watch times" when the CSS file changes.
     new WatchTimesPlugin([
       /css\.d\.ts$/
     ]),
     // Delegate TypeScript type-checker on a separate process
     new ForkTsCheckerWebpackPlugin({
       async: false,
+      checkSyntacticErrors: true,
       watch: paths.appSrc,
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLintConfig,

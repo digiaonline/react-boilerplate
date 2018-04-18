@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer')
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackIncludeSiblingChunksPlugin = require('html-webpack-include-sibling-chunks-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -30,8 +31,20 @@ const env = getClientEnvironment(publicUrl)
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
-if (env.stringified['process.env'].NODE_ENV !== '"production"') {
+if( env.stringified[ 'process.env' ].NODE_ENV !== '"production"' ) {
   throw new Error('Production builds must have NODE_ENV=production.')
+}
+
+const postCSSOptions = {
+  // Necessary for external CSS imports to work
+  // https://github.com/facebook/create-react-app/issues/2677
+  ident: 'postcss',
+  plugins: () => [
+    require('postcss-flexbugs-fixes'),
+    autoprefixer({
+      flexbox: 'no-2009'
+    })
+  ]
 }
 
 // This is the production configuration.
@@ -45,7 +58,7 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the polyfills and the app code.
-  entry: [require.resolve('./polyfills'), paths.appIndexTs],
+  entry: [ require.resolve('./polyfills'), paths.appIndexTs ],
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -100,14 +113,24 @@ module.exports = {
         sourceMap: shouldUseSourceMap
       }),
       new OptimizeCSSAssetsPlugin()
-    ]
+    ],
+    // Automatically split vendor and commons
+    // https://twitter.com/wSokra/status/969633336732905474
+    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+    splitChunks: {
+      chunks: 'all',
+      name: false
+    },
+    // Keep the runtime chunk seperated to enable long term caching
+    // https://twitter.com/wSokra/status/969679223278505985
+    runtimeChunk: true
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
-    modules: ['node_modules', paths.appNodeModules].concat(
+    modules: [ 'node_modules', paths.appNodeModules ].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
@@ -134,32 +157,22 @@ module.exports = {
       'react-native': 'react-native-web'
     },
     plugins: [
+      new TsconfigPathsPlugin({
+        configFile: require.resolve('../tsconfig.json')
+      }),
       // Prevents users from importing files from outside of src/ (or node_modules/).
       // This often causes confusion because we only process files within src/ with babel.
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-      new TsconfigPathsPlugin({
-        configFile: require.resolve('../tsconfig.json')
-      }),
+      new ModuleScopePlugin(paths.appSrc, [ paths.appPackageJson ])
     ]
   },
   module: {
     strictExportPresence: true,
     rules: [
-      // TODO: Disable require.ensure as it's not a standard language feature.
-      // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
-      // { parser: { requireEnsure: false } },
-
-      // First, run the linter.
-      // It's important to do this before Babel processes the JS.
-      {
-        test: /\.(ts|tsx)$/,
-        loader: require.resolve('tslint-loader'),
-        enforce: 'pre',
-        include: paths.appSrc
-      },
+      // Disable require.ensure as it's not a standard language feature.
+      { parser: { requireEnsure: false } },
       {
         test: /\.js$/,
         loader: require.resolve('source-map-loader'),
@@ -174,26 +187,39 @@ module.exports = {
           // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: [ /\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/ ],
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
               name: 'static/media/[name].[hash:8].[ext]'
             }
           },
-          //Compile .tsx?
+          // Compile .tsx?
           {
-            test: /\.(tsx?)$/,
+            test: /\.tsx?$/,
             include: paths.appSrc,
-
-            loader: require.resolve('ts-loader'),
-            options: {
-              transpileOnly: true,
-              compilerOptions: {
-                // uglify doesn't understand all es6 syntax
-                target: 'es5'
-              }
-            }
+            use: [
+              { loader: 'cache-loader' },
+              {
+                loader: 'thread-loader',
+                options: {
+                  // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+                  workers: require('os').cpus().length - 1,
+                },
+              },
+              {
+                loader: require.resolve('ts-loader'),
+                options: {
+                  happyPackMode: true,
+                  // disable type checker - we will use it in fork plugin
+                  transpileOnly: true,
+                  compilerOptions: {
+                    // uglify doesn't understand all es6 syntax
+                    target: 'es5'
+                  }
+                },
+              },
+            ],
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
@@ -217,35 +243,19 @@ module.exports = {
                   importLoaders: 1,
                   sourceMap: shouldUseSourceMap,
                   modules: true,
-                  localIdentName: '[path]__[name]___[local]',
-                },
+                  localIdentName: '[path]__[name]___[local]'
+                }
               },
               {
                 loader: require.resolve('postcss-loader'),
-                options: {
-                  // Necessary for external CSS imports to work
-                  // https://github.com/facebookincubator/create-react-app/issues/2677
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9' // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009'
-                    })
-                  ]
-                }
+                options: postCSSOptions
               }
-            ],
+            ]
           },
           // The GraphQL loader preprocesses GraphQL queries in .graphql files.
           {
             test: /\.(graphql)$/,
-            loader: 'graphql-tag/loader',
+            loader: 'graphql-tag/loader'
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
@@ -257,10 +267,10 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
             options: {
-              name: 'static/media/[name].[hash:8].[ext]'
-            }
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
           }
           // ** STOP ** Are you adding a new loader?
           // Make sure to add the new loader(s) before the "file" loader.
@@ -269,6 +279,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackIncludeSiblingChunksPlugin(),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
@@ -301,14 +312,14 @@ module.exports = {
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: 'static/css/[name].[contenthash:8].css',
-      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
     }),
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
-      publicPath: publicPath,
+      publicPath: publicPath
     }),
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
@@ -320,24 +331,23 @@ module.exports = {
       dontCacheBustUrlsMatching: /\.\w{8}\./,
       filename: 'service-worker.js',
       logger(message) {
-        if (message.indexOf('Total precache size is') === 0) {
+        if( message.indexOf('Total precache size is') === 0 ) {
           // This message occurs for every build and is a bit too noisy.
-          return;
+          return
         }
-        if (message.indexOf('Skipping static resource') === 0) {
+        if( message.indexOf('Skipping static resource') === 0 ) {
           // This message obscures real errors so we ignore it.
           // https://github.com/facebook/create-react-app/issues/2612
-          return;
+          return
         }
-        console.log(message);
+        console.log(message)
       },
       minify: true,
       // Don't precache sourcemaps (they're large) and build asset manifest:
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      staticFileGlobsIgnorePatterns: [ /\.map$/, /asset-manifest\.json$/ ]
       // `navigateFallback` and `navigateFallbackWhitelist` are disabled by default; see
       // https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#service-worker-considerations
-      // navigateFallback: publicUrl + '/index.html',
-      // navigateFallbackWhitelist: [/^(?!\/__).*/],
+      // navigateFallback: publicUrl + '/index.html', navigateFallbackWhitelist: [/^(?!\/__).*/],
     }),
     // Moment.js is an extremely popular library that bundles large locale files
     // by default due to how Webpack interprets its code. This is a practical
@@ -346,6 +356,8 @@ module.exports = {
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ForkTsCheckerWebpackPlugin({
+      async: false,
+      checkSyntacticErrors: true,
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLintConfig
     })
@@ -357,11 +369,11 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    child_process: 'empty',
+    child_process: 'empty'
   },
   // Turn off performance hints in production because we utilize
   // our own hints via the FileSizeReporter
   performance: {
-    hints: false,
+    hints: false
   }
 }
