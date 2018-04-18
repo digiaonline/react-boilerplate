@@ -11,6 +11,13 @@ if (typeof Promise === 'undefined') {
 // fetch() polyfill for making API calls.
 require('whatwg-fetch');
 
+// Map and Set polyfills
+require('core-js/es6/map');
+require('core-js/es6/set');
+
+// RequestAnimationFrame polyfill
+require('raf/polyfill')
+
 // Object.assign() is commonly used with React.
 // It will use the native implementation if it's present and isn't buggy.
 Object.assign = require('object-assign');
