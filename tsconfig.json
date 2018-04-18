@@ -1,23 +1,26 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    "outDir": "build/dist",
     "baseUrl": ".",
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["es6", "dom"],
     "module": "esnext",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
     "moduleResolution": "node",
-    "noImplicitAny": true,
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "outDir": "build/dist",
-    "rootDir": "src",
-    "sourceMap": true,
+    "noImplicitAny": true,
     "strictNullChecks": true,
+    "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "es5"
+    "noUnusedLocals": true
   },
   "exclude": [
     "node_modules",

@@ -9,6 +9,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const InterpolateHtmlPlugin = require('./react-dev-utils/InterpolateHtmlPlugin')
 const WatchMissingNodeModulesPlugin = require('./react-dev-utils/WatchMissingNodeModulesPlugin')
 const ModuleScopePlugin = require('./react-dev-utils/ModuleScopePlugin')
+const WatchTimesPlugin = require('./WatchTimesPlugin')
 const getClientEnvironment = require('./env')
 const paths = require('./paths')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
@@ -132,24 +133,11 @@ module.exports = {
       // TODO: Disable require.ensure as it's not a standard language feature.
       // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
       // { parser: { requireEnsure: false } },
-
-      // First, run the linter.
-      // It's important to do this before Babel processes the JS.
-      // {
-      //   test: /\.(ts|tsx)$/,
-      //   loader: require.resolve('tslint-loader'),
-      //   enforce: 'pre',
-      //   include: paths.appSrc,
-      //   options: {
-      //     failOnHint: true,
-      //     emitErrors: true
-      //   }
-      // },
       {
-        test: /\.js$/,
-        enforce: 'pre',
+        test: /\.(js|jsx|mjs)$/,
         loader: require.resolve('source-map-loader'),
-        include: paths.appSrc
+        enforce: 'pre',
+        include: paths.appSrc,
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -164,22 +152,22 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'static/media/[name].[hash:8].[ext]'
-            }
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
           },
           // Compile .tsx?
           {
-            test: /\.(tsx?)$/,
+            test: /\.(ts|tsx)$/,
             include: paths.appSrc,
             use: [
               {
                 loader: require.resolve('ts-loader'),
                 options: {
-                  // faster rebuilds:
-                  transpileOnly: true
-                }
-              }
-            ]
+                  // disable type checker - we will use it in fork plugin
+                  transpileOnly: true,
+                },
+              },
+            ],
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -228,15 +216,15 @@ module.exports = {
           // that fall through the other loaders.
           {
             // Exclude `js` files to keep "css" loader working as it injects
-            // it's runtime that would otherwise processed through "file" loader.
+            // its runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
             loader: require.resolve('file-loader'),
             options: {
-              name: 'static/media/[name].[hash:8].[ext]'
-            }
-          }
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
+          },
         ]
       }
       // ** STOP ** Are you adding a new loader?
@@ -276,12 +264,19 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.WatchIgnorePlugin([
+      /css\.d\.ts$/
+    ]),
+    new WatchTimesPlugin([
+      /css\.d\.ts$/
+    ]),
     // Delegate TypeScript type-checker on a separate process
     new ForkTsCheckerWebpackPlugin({
+      async: false,
+      watch: paths.appSrc,
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLintConfig,
-      watch: [paths.appSrc]
-    })
+    }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
