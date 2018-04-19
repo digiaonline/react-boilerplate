@@ -279,6 +279,7 @@ module.exports = {
     ]
   },
   plugins: [
+    // This makes chunks work with Webpack 4+ and ts-loader.
     new HtmlWebpackIncludeSiblingChunksPlugin(),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
