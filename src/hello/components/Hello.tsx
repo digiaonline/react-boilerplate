@@ -3,8 +3,8 @@ import { observer } from 'mobx-react'
 import helloStore from '../store'
 import * as css from './Hello.css'
 
-interface Props {}
-interface State {}
+type Props = {}
+type State = {}
 
 @observer
 export class Hello extends React.Component<Props, State> {

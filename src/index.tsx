@@ -4,9 +4,11 @@ import { AppContainer } from 'react-hot-loader'
 import Root from './root/components/Root'
 import './index.css'
 
-const renderApp = (component: any) =>
+const renderApp = (Component: any) =>
   render(
-    <AppContainer>{React.createElement(component)}</AppContainer>,
+    <AppContainer>
+      <Component />
+    </AppContainer>,
     document.getElementById('root')
   )
 

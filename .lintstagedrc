@@ -1,6 +1,6 @@
 {
   "*.ts?(x)": [
-    "prettier-tslint fix \"src/**/*.ts?(x)\"",
+    "yarn run codestyle",
     "git add"
   ],
   "*.css": [
