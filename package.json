@@ -74,7 +74,7 @@
     "webpack-manifest-plugin": "2.0.0"
   },
   "scripts": {
-    "ci": "CI=true run-p test",
+    "ci": "CI=true yarn run lint && yarn run test",
     "lint": "tslint src/**/*.ts?\\(x\\) --project ./tsconfig.json",
     "precommit": "lint-staged",
     "codestyle": "tslint src/**/*.ts?\\(x\\) --project ./tsconfig.json --fix",
