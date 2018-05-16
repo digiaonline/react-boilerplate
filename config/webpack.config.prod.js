@@ -174,6 +174,16 @@ module.exports = {
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
       {
+        test: /\.(ts|tsx)$/,
+        loader: require.resolve('tslint-loader'),
+        enforce: 'pre',
+        include: paths.appSrc,
+        options: {
+          configFile: paths.appTsLintConfig,
+          fix: true
+        }
+      },
+      {
         test: /\.js$/,
         loader: require.resolve('source-map-loader'),
         enforce: 'pre',

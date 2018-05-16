@@ -74,11 +74,11 @@ module.exports = {
     // Next line is not used in dev but WebpackDevServer crashes without it:
     path: paths.appBuild,
     // Add /* filename */ comments to generated require()s in the output.
-    pathinfo: true,
+    pathinfo: false,
     // This does not produce a real file. It's just the virtual path that is
     // served by WebpackDevServer in development. This is the JS bundle
     // containing code from all our entry points, and the Webpack runtime.
-    filename: 'static/js/bundle.js',
+    filename: 'static/js/[name].js',
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].chunk.js',
     // This is the URL that app is served from. We use "/" in development.
@@ -88,16 +88,9 @@ module.exports = {
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   optimization: {
-    // Automatically split vendor and commons
-    // https://twitter.com/wSokra/status/969633336732905474
-    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
-    splitChunks: {
-      chunks: 'all',
-      name: false,
-    },
-    // Keep the runtime chunk seperated to enable long term caching
-    // https://twitter.com/wSokra/status/969679223278505985
-    runtimeChunk: true,
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -123,7 +116,8 @@ module.exports = {
       '.js',
       '.json',
       '.web.jsx',
-      '.jsx'
+      '.jsx',
+      '.svg'
     ],
     alias: {
       // Support React Native Web
@@ -131,13 +125,13 @@ module.exports = {
       'react-native': 'react-native-web'
     },
     plugins: [
-      new TsconfigPathsPlugin({ configFile: require.resolve('../tsconfig.json') }),
       // Prevents users from importing files from outside of src/ (or node_modules/).
       // This often causes confusion because we only process files within src/ with babel.
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson])
+      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+      new TsconfigPathsPlugin({ configFile: require.resolve('../tsconfig.json') })
     ]
   },
   module: {
@@ -186,6 +180,7 @@ module.exports = {
                   happyPackMode: true,
                   // disable type checker - we will use it in fork plugin
                   transpileOnly: true,
+                  experimentalWatchApi: true
                 },
               },
             ],
