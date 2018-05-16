@@ -98,7 +98,7 @@
       "^.+\\.tsx?$": "<rootDir>/config/jest/typescriptTransform.js",
       "^(?!.*\\.(js|jsx|css)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "testRegex": ".*\\.(test|spec)\\.tsx?$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -111,6 +111,15 @@
     ],
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "transform-decorators-legacy",
+      "react-hot-loader/babel"
     ]
   },
   "styleguide": {
