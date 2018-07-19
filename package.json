@@ -1,11 +1,11 @@
 {
+  "name": "react-boilerplate",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "mobx": "^3.2.2",
-    "mobx-react": "^4.2.2",
-    "normalize.css": "^7.0.0",
-    "@babel/core": "7.0.0-beta.46",
+    "@babel/core": "7.0.0-beta.54",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-decorators": "^7.0.0-beta.54",
     "@babel/runtime": "7.0.0-beta.46",
     "autoprefixer": "8.5.0",
     "babel-core": "7.0.0-bridge.0",
@@ -16,7 +16,6 @@
     "babel-preset-react-app": "4.0.0-next.3e165448",
     "bfj": "5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
-    "chalk": "2.4.1",
     "css-loader": "0.28.11",
     "dotenv": "5.0.1",
     "dotenv-expand": "4.2.0",
@@ -33,45 +32,27 @@
     "graphql-tag": "2.9.2",
     "html-webpack-plugin": "3.2.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "22.4.3",
     "loader-utils": "^1.1.0",
     "mini-css-extract-plugin": "^0.4.0",
+    "mobx": "^3.2.2",
+    "mobx-react": "^4.2.2",
+    "normalize.css": "^8.0.0",
     "object-assign": "4.1.1",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
     "postcss-flexbugs-fixes": "3.3.1",
     "postcss-loader": "2.1.5",
     "promise": "8.0.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.2.2",
-    "style-loader": "0.18.2",
-    "sw-precache-webpack-plugin": "0.11.4",
-    "url-loader": "0.5.9",
-    "webpack": "3.5.1",
-    "webpack-manifest-plugin": "1.2.1",
-    "whatwg-fetch": "2.0.3"
-  },
-  "devDependencies": {
-    "chalk": "1.1.3",
-    "flow-bin": "0.52",
-    "flow-typed": "^2.1.5",
-    "husky": "^0.14.3",
-    "jest": "20.0.4",
-    "lint-staged": "^4.0.4",
-    "npm-run-all": "^4.1.1",
-    "prettier-eslint-cli": "^4.3.0",
-    "react-hot-loader": "next",
-    "react-test-renderer": "^15.6.1",
-    "stylefmt": "^6.0.0",
-    "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^17.0.0",
     "raf": "3.4.0",
     "react": "^16.4.1",
-    "react-dev-utils": "6.0.0-next.3e165448",
+    "react-dev-utils": "^6.0.0-next.3e165448",
     "react-dom": "^16.4.1",
+    "react-hot-loader": "^4.3.3",
+    "react-router-dom": "^4.3.1",
+    "react-test-renderer": "^16.4.1",
     "resolve": "1.6.0",
     "sass-loader": "7.0.1",
     "style-loader": "0.21.0",
+    "stylefmt": "^6.0.2",
     "svgr": "1.9.2",
     "sw-precache-webpack-plugin": "0.11.5",
     "thread-loader": "1.1.5",
@@ -82,7 +63,20 @@
     "webpack-manifest-plugin": "2.0.3",
     "whatwg-fetch": "2.0.4"
   },
+  "devDependencies": {
+    "chalk": "2.4.1",
+    "flow-bin": "0.52",
+    "flow-typed": "^2.4.0",
+    "husky": "^0.14.3",
+    "jest": "22.4.3",
+    "lint-staged": "^4.0.4",
+    "npm-run-all": "^4.1.1",
+    "prettier-eslint-cli": "^4.3.0"
+  },
   "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
     "ci": "CI=true run-p flow lint-staged test:cov",
     "flow": "flow",
     "flow:fetch-types": "flow-typed install --flowVersion=0.52",
@@ -90,10 +84,8 @@
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
     "stylelint": "stylelint 'src/**/*.css'",
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
     "test:cov": "yarn test --coverage"
+  },
   "browserslist": {
     "development": [
       "last 2 chrome versions",
@@ -108,15 +100,12 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.js?(x)",
-      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
       "**/__tests__/**/*.{js,jsx,mjs}",
       "**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
@@ -126,7 +115,6 @@
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/config/jest/babelTransform.js",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^.+\\.(graphql)$": "<rootDir>/config/jest/graphqlTransform.js",
@@ -146,21 +134,8 @@
       "json",
       "web.jsx",
       "jsx",
-      "node"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      "transform-decorators-legacy",
-      "react-hot-loader/babel"
       "node",
       "mjs"
     ]
-  },
-  "styleguide": {
-    "components": "src/**/[A-Z]*.js"
   }
 }

@@ -7,7 +7,7 @@ import helloStore from '../store'
 
 @observer
 export class Hello extends Component {
-  componentWillMount() {
+  componentDidMount() {
     helloStore.sayHello()
   }
 

@@ -1,5 +1,5 @@
-// flow-typed signature: a52ef25660e2172052618e087e7f31b7
-// flow-typed version: 37d8964a70/react-router-dom_v4.x.x/flow_>=v0.38.x <=v0.52.x
+// flow-typed signature: cdb90d4f8d2c2089a531c3081a4e4fc1
+// flow-typed version: f821d89401/react-router-dom_v4.x.x/flow_>=v0.38.x <=v0.52.x
 
 declare module 'react-router-dom' {
   declare export class BrowserRouter extends React$Component {
@@ -90,6 +90,7 @@ declare module 'react-router-dom' {
     history: RouterHistory,
     location: Location,
     match: Match,
+    staticContext?: StaticRouterContext,
   }
 
   declare export type GetUserConfirmation =
