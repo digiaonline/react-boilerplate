@@ -6,7 +6,7 @@ class HelloStore {
   @observable message: string = 'Hello.'
 
   @action
-  sayHello = () => {
+  sayHello = (): void => {
     this.message = 'Hello from MobX!'
   }
 }

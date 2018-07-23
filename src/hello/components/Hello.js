@@ -1,12 +1,12 @@
 // @flow
 
-import React, {Component} from 'react'
+import * as React from 'react'
 import {observer} from 'mobx-react'
 import css from './Hello.css'
 import helloStore from '../store'
 
 @observer
-export class Hello extends Component {
+export class Hello extends React.Component<{}> {
   componentDidMount() {
     helloStore.sayHello()
   }
