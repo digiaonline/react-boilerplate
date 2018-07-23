@@ -64,7 +64,6 @@
     "whatwg-fetch": "2.0.4"
   },
   "devDependencies": {
-    "babel-preset-flow": "^6.23.0",
     "chalk": "2.4.1",
     "flow-bin": "0.77",
     "flow-typed": "^2.5.0",
