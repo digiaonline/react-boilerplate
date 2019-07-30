@@ -55,7 +55,7 @@
     "stylefmt": "^6.0.0",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "webpack-dev-server": "2.7.1"
+    "webpack-dev-server": "3.1.11"
   },
   "scripts": {
     "ci": "CI=true run-p flow lint-staged test:cov",
